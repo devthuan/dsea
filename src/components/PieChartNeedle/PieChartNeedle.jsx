@@ -1,71 +1,98 @@
-import React, { useState, useEffect } from "react";
-import { PieChart, Pie, ResponsiveContainer, Cell } from "recharts";
+import React from "react";
+import { PieChart, Pie, Cell } from "recharts";
 
-const data02 = [
-  { name: "A1", value: 100 },
-  { name: "A2", value: 300 },
-  { name: "B1", value: 100 },
-  { name: "B2", value: 80 },
+const RADIAN = Math.PI / 180;
+const data = [
+  { name: "A", value: 80, color: "#ff0000" },
+  { name: "B", value: 45, color: "#00ff00" },
+  { name: "C", value: 25, color: "#0000ff" },
 ];
+const cx = 150;
+const cy = 200;
+const iR = 50;
+const oR = 100;
+const value = 50;
 
-const totalValue = data02.reduce((sum, entry) => sum + entry.value, 0);
-const getRandomColor = () =>
-  "#" + Math.floor(Math.random() * 16777215).toString(16);
+const needle = (value, data, cx, cy, iR, oR, color) => {
+  let total = 0;
+  data.forEach((v) => {
+    total += v.value;
+  });
+  const ang = 180.0 * (1 - value / total);
+  const length = (iR + 2 * oR) / 3;
+  const sin = Math.sin(-RADIAN * ang);
+  const cos = Math.cos(-RADIAN * ang);
+  const r = 5;
+  const x0 = cx + 5;
+  const y0 = cy + 5;
+  const xba = x0 + r * sin;
+  const yba = y0 - r * cos;
+  const xbb = x0 - r * sin;
+  const ybb = y0 + r * cos;
+  const xp = x0 + length * cos;
+  const yp = y0 + length * sin;
 
-const CustomPieChart2 = ({ data, dataKey }) => {
-  const [animatedTotal, setAnimatedTotal] = useState(0);
-  const [colors, setColors] = useState([]);
+  return [
+    <circle key="circle" cx={x0} cy={y0} r={r} fill={color} stroke="none" />,
+    <path
+      key="path"
+      d={`M${xba} ${yba}L${xbb} ${ybb} L${xp} ${yp} L${xba} ${yba}`}
+      stroke="none"
+      fill={color}
+    />,
+  ];
+};
 
-  useEffect(() => {
-    setColors(data02.map(() => getRandomColor()));
-    let start = 0;
-    const duration = 1000;
-    const increment = totalValue / (duration / 16);
-
-    const animate = () => {
-      start += increment;
-      if (start >= totalValue) {
-        setAnimatedTotal(totalValue);
-      } else {
-        setAnimatedTotal(Math.floor(start));
-        requestAnimationFrame(animate);
-      }
-    };
-
-    animate();
-  }, []);
+// Custom label renderer
+const renderCustomizedLabel = ({
+  cx,
+  cy,
+  midAngle,
+  innerRadius,
+  outerRadius,
+  percent,
+  index,
+}) => {
+  const radius = innerRadius + (outerRadius - innerRadius) * 1.5;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
   return (
-    <ResponsiveContainer width="100%" height={400}>
-      <PieChart>
-        <text
-          x="50%"
-          y="50%"
-          textAnchor="middle"
-          dominantBaseline="middle"
-          fontSize={24}
-          fontWeight="bold"
-        >
-          {animatedTotal}
-        </text>
-        <Pie
-          data={data}
-          dataKey={dataKey}
-          cx="50%"
-          cy="50%"
-          innerRadius={70}
-          outerRadius={90}
-          label
-          animationDuration={1000}
-          animationEasing="ease-out"
-        >
-          {data02.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={colors[index]} />
-          ))}
-        </Pie>
-      </PieChart>
-    </ResponsiveContainer>
+    <text
+      x={x}
+      y={y}
+      fill="#333"
+      textAnchor={x > cx ? "start" : "end"}
+      dominantBaseline="central"
+    >
+      {`${data[index].name} (${(percent * 100).toFixed(0)}%)`}
+    </text>
   );
 };
 
-export default CustomPieChart2;
+const PieChartNeedle = () => {
+  return (
+    <PieChart width={400} height={500}>
+      <Pie
+        dataKey="value"
+        startAngle={180}
+        endAngle={0}
+        data={data}
+        cx={cx}
+        cy={cy}
+        innerRadius={iR}
+        outerRadius={oR}
+        fill="#8884d8"
+        stroke="none"
+        label={renderCustomizedLabel}
+      >
+        {data.map((entry, index) => (
+          <Cell key={`cell-${index}`} fill={entry.color} />
+        ))}
+      </Pie>
+      {needle(value, data, cx, cy, iR, oR, "#d0d000")}
+    </PieChart>
+  );
+};
+
+export default PieChartNeedle;

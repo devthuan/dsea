@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   LineChart,
   Line,
@@ -10,7 +10,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const LineChartReChart = ({data, dataKeyX, dataKeyY}) => {
+const LineChartReChart = ({ data, dataKeyX, dataKeyY }) => {
   // const [data, setData] = useState([
   //   { name: "Page A", uv: 4000, pv: 2400, amt: 2400 },
   //   { name: "Page B", uv: 3000, pv: 1398, amt: 2210 },
