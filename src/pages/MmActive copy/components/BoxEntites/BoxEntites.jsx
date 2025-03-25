@@ -1,7 +1,8 @@
 import classNames from "classnames/bind";
-import styles from "./BoxTableTopPerformance.module.scss";
+import styles from "./BoxEntites.module.scss";
 import { images } from "../../../../assets";
 
+// eslint-disable-next-line no-unused-vars
 const cx = classNames.bind(styles);
 
 const data = [
@@ -23,15 +24,15 @@ const data = [
   },
 ];
 
-const coloums = ["#", "Name", "Price", "24h Change", "Net Inflow"];
+const coloums = ["Holder", "Name", "Price", "24h Change", "Net Inflow"];
 
-const BoxTableTopPerformance = () => {
+const BoxEntites = () => {
   return (
     <div className="w-full h-full">
       <div className="w-full h-full bg-white rounded-[32px] p-[24px] flex flex-col gap-y-[16px]">
         <div className="w-full h-full">
-          <h1 className="mb-[32px] justify-start text-black text-2xl font-normal font-['Poppins'] leading-9">
-            Top performance altcoin
+          <h1 className="mb-[26px] justify-start text-black text-2xl font-semibold font-['Inter']">
+            Entities
           </h1>
           <table className="w-full h-auto border-none">
             <thead>
@@ -74,4 +75,4 @@ const BoxTableTopPerformance = () => {
   );
 };
 
-export default BoxTableTopPerformance;
+export default BoxEntites;
