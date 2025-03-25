@@ -5,7 +5,8 @@ const cx = classNames.bind(styles);
 
 const ButtonCustom = ({
   text,
-  icon,
+  iconLeft,
+  iconRight,
   size = "medium", // Kích thước mặc định
   variant = "default", // Kiểu mặc định
   outline = true, // Có viền hay không
@@ -42,17 +43,27 @@ const ButtonCustom = ({
       onClick={onClick}
     >
       <div className="flex justify-start gap-1 items-center">
-        {icon && (
+        {iconLeft && (
           <img
             className={cx("w-[16px] h-[16px]", {
               "w-[12px] h-[12px]": size === "small",
               "w-[20px] h-[20px]": size === "large",
             })}
-            src={icon}
+            src={iconLeft}
             alt="icon-button"
           />
         )}
         <p>{text}</p>
+        {iconRight && (
+          <img
+            className={cx("w-[16px] h-[16px]", {
+              "w-[12px] h-[12px]": size === "small",
+              "w-[20px] h-[20px]": size === "large",
+            })}
+            src={iconRight}
+            alt="icon-button"
+          />
+        )}
       </div>
     </div>
   );

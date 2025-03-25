@@ -37,7 +37,6 @@ const useTickerWS = () => {
           currentPrice: data.o,
         };
       });
-      console.log(formatData);
       setDataTop10(formatData);
     };
 

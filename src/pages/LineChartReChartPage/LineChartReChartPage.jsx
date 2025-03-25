@@ -1,6 +1,6 @@
-import LineChartLightWeight from "../../components/LineChartLightWeight/LineChartLightWeight";
-import LineChartReChart from "../../components/LineChartReChart/LineChartReChart";
-import LineChartReChart2 from "../../components/LineChartReChart2/LineChartReChart2";
+import LineChartLightWeight from "../../components/charts/LineChartLightWeight/LineChartLightWeight";
+import LineChartReChart from "../../components/charts/LineChartReChart/LineChartReChart";
+import LineChartReChart2 from "../../components/charts/LineChartReChart2/LineChartReChart2";
 
 const LineChartReChartPage = () => {
   const data = [

@@ -1,4 +1,4 @@
-import NetFlowChart from "../../components/NetFlowChart/NetFlowChart";
+import NetFlowChart from "../../components/charts/NetFlowChart/NetFlowChart";
 
 const NetFlowReChartPage = () => {
   const btcData = [

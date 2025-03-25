@@ -1,4 +1,4 @@
-import PieChartNeedle from "../../components/PieChartNeedle/PieChartNeedle";
+import PieChartNeedle from "../../components/charts/PieChartNeedle/PieChartNeedle";
 
 const PieChartNeedlePage = () => {
   const data = [

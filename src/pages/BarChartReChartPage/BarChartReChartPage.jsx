@@ -1,4 +1,4 @@
-import BarChartRechart from "../../components/BarChartRechart/BarChartRechart";
+import BarChartRechart from "../../components/charts/BarChartRechart/BarChartRechart";
 
 const BarChartReChartPage = () => {
   const data = [

@@ -12,6 +12,11 @@ import notificationIcon from "/src/assets/notification-icon.png";
 import userAvatar from "/src/assets/user-avatar.png";
 import moreIcon from "/src/assets/more-icon.png";
 import backArrowIcon from "/src/assets/back-arrow-icon.png";
+import arrowDownIcon from "/src/assets/arrow-down-icon.svg";
+import arrowUpIcon from "/src/assets/arrow-up-icon.svg";
+import triangleDownIcon from "/src/assets/triangle-down-icon.svg";
+import triangleUpIcon from "/src/assets/triangle-up-icon.svg";
+import coinIcon from "/src/assets/coin-icon.svg";
 
 export const images = {
   reactIcon: reactIcon,
@@ -28,6 +33,11 @@ export const images = {
   userAvatar: userAvatar,
   moreIcon: moreIcon,
   backArrowIcon: backArrowIcon,
+  arrowUpIcon: arrowUpIcon,
+  arrowDownIcon: arrowDownIcon,
+  triangleDownIcon: triangleDownIcon,
+  triangleUpIcon: triangleUpIcon,
+  coinIcon: coinIcon,
 };
 
 export const ArrowDownIcon = ({ className }) => {

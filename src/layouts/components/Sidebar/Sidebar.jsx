@@ -2,24 +2,25 @@ import { useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./Sidebar.module.scss";
 import { images } from "../../../assets";
-import ItemMenuSidebar from "../../../components/ItemMenuSidebar/ItemMenuSidebar";
+import { NavLink } from "react-router";
 
 const cx = classNames.bind(styles);
 
 const Sidebar = () => {
   const [isAssetsOpen, setIsAssetsOpen] = useState(false);
   const [isDeepseaOpen, setIsDeepseaOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   // Dữ liệu menu
   const menuItems = [
-    // {
-    //   url: "/dashboard",
-    //   label: "Dashboard",
-    //   icon: images.homeIcon,
-    //   isDropdown: false,
-    // },
     {
-      url: "/assets",
+      url: "/",
+      label: "Dashboard",
+      icon: images.homeIcon,
+      isDropdown: false,
+    },
+    {
+      url: "",
       label: "Chart",
       icon: images.homeIcon,
       isDropdown: true,
@@ -85,19 +86,19 @@ const Sidebar = () => {
         },
       ],
     },
-    // {
-    //   url: "/deepsea",
-    //   label: "Deepsea",
-    //   icon: images.homeIcon,
-    //   isDropdown: true,
-    //   isOpen: isDeepseaOpen,
-    //   setIsOpen: setIsDeepseaOpen,
-    //   children: [
-    //     { id: "crypto", label: "Crypto" },
-    //     { id: "stocks", label: "Stocks" },
-    //     { id: "forex", label: "Forex" },
-    //   ],
-    // },
+    {
+      url: "/deepsea",
+      label: "Deepsea",
+      icon: images.homeIcon,
+      isDropdown: true,
+      isOpen: isDeepseaOpen,
+      setIsOpen: setIsDeepseaOpen,
+      children: [
+        { id: "crypto", label: "Crypto" },
+        { id: "stocks", label: "Stocks" },
+        { id: "forex", label: "Forex" },
+      ],
+    },
   ];
 
   const menuItemSetting = [
@@ -122,15 +123,29 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className={cx("w-full h-full pl-[40px] relative")}>
-      <div className="h-[108px] w-full flex justify-start items-center">
-        <h1 className="text-[40px] font-bold">DeepSea</h1>
+    <div
+      className={cx(
+        "w-full h-full  relative flex flex-col  justify-start ",
+        `h-screen  text-black transition-all duration-300 ${
+          isOpen
+            ? "w-52 items-start pl-[10px] bg-white"
+            : "w-16 items-center bg-white/20"
+        }`
+      )}
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <div className="h-[108px] w-full flex justify-center items-center">
+        <h1 className="text-[40px] font-bold">{isOpen ? "DeepSea" : "D"}</h1>
       </div>
 
-      <div className="mt-[39px]">
+      {/* group assets */}
+      <div className="mt-[-20px]">
         <ul>
           {menuItems.map((item, index) => (
-            <ItemMenuSidebar key={index} item={item} />
+            <NavLink key={index} to={item.url}>
+              <SidebarItem item={item} isOpen={isOpen} />
+            </NavLink>
           ))}
         </ul>
       </div>
@@ -139,11 +154,66 @@ const Sidebar = () => {
       <div className=" mt-[240px]">
         <ul>
           {menuItemSetting.map((item, index) => (
-            <ItemMenuSidebar key={index} item={item} />
+            <SidebarItem key={index} item={item} isOpen={isOpen} />
           ))}
         </ul>
       </div>
     </div>
+  );
+};
+
+const SidebarItem = ({ item, isOpen }) => {
+  return (
+    <li
+      key={item.id}
+      className="mt-[20px] "
+      onMouseLeave={() => item.isDropdown && item.setIsOpen(false)}
+    >
+      <div
+        className="flex gap-[12px] text-[20px] justify-start items-center cursor-pointer"
+        onClick={() => item.isDropdown && item.setIsOpen(!item.isOpen)}
+      >
+        <div className="w-[36px] h-[36px] bg-[var(--primary)] rounded-[50%] flex justify-center items-center">
+          <img src={item.icon} alt="" />
+        </div>
+        {isOpen && (
+          <div className="flex items-center gap-[12px]">
+            <span>{item.label}</span>
+            {item.isDropdown && (
+              <span>
+                <img
+                  className={`w-[22px] h-auto transition-transform duration-300 ${
+                    item.isOpen ? "rotate-180" : "rotate-0"
+                  }`}
+                  src={images.downArrowIcon}
+                  alt=""
+                />
+              </span>
+            )}
+          </div>
+        )}
+      </div>
+
+      {item.isDropdown && item.isOpen && (
+        <ul className="pl-[30px] mt-[12px] space-y-[8px]">
+          {item.children.map((child, index) => (
+            <NavLink
+              key={index}
+              to={child.url}
+              className={({ isActive }) =>
+                `text-[18px] transition-all cursor-pointer ${
+                  isActive
+                    ? "text-[var(--primary)] font-bold"
+                    : "hover:text-[var(--primary)]"
+                }`
+              }
+            >
+              <li>{child.label}</li>
+            </NavLink>
+          ))}
+        </ul>
+      )}
+    </li>
   );
 };
 

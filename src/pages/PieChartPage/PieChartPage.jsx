@@ -1,7 +1,7 @@
-import TreeMapChart from "../../components/TreeMapChart/TreeMapChart";
-import InflowOutflowChart from "../../components/InFlowOutFlow/InFlowOutFlow";
-import LineChart from "../../components/LineChartLightWeight/LineChartLightWeight";
-import CustomPieChart from "../../components/PieChart/PieChart";
+import TreeMapChart from "../../components/charts/TreeMapChart/TreeMapChart";
+import InflowOutflowChart from "../../components/charts/InFlowOutFlow/InFlowOutFlow";
+import LineChart from "../../components/charts/LineChartLightWeight/LineChartLightWeight";
+import CustomPieChart from "../../components/charts/PieChart/PieChart";
 
 const PieChartPage = () => {
   const sampleData = [

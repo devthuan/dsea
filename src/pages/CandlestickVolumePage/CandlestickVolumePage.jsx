@@ -1,4 +1,4 @@
-import CandlestickVolume from "../../components/CandlestickVolume/CandlestickVolume";
+import CandlestickVolume from "../../components/charts/CandlestickVolume/CandlestickVolume";
 
 const CandlestickVolumePage = () => {
   const dataPrice = [

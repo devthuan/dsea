@@ -1,4 +1,4 @@
-import LineChartLightWeight from "../../components/LineChartLightWeight/LineChartLightWeight";
+import LineChartLightWeight from "../../components/charts/LineChartLightWeight/LineChartLightWeight";
 
 const LineChartLightWeightPage = () => {
   const dataExample = [

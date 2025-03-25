@@ -1,5 +1,5 @@
-import AreaChartLightWeight from "../../components/AreaChartLightWeight/AreaChartLightWeight";
-import CustomPieChart2 from "../../components/PieChart2/PieChart2";
+import AreaChartLightWeight from "../../components/charts/AreaChartLightWeight/AreaChartLightWeight";
+import CustomPieChart2 from "../../components/charts/PieChart2/PieChart2";
 
 const AreaChartLightWeightPage = () => {
   const data = [

@@ -1,4 +1,4 @@
-import InFlowOutFlowChart from "../../components/InFlowOutFlow/InFlowOutFlow";
+import InFlowOutFlowChart from "../../components/charts/InFlowOutFlow/InFlowOutFlow";
 
 const InFlowOutFlowPage = () => {
   const btcPriceData = [

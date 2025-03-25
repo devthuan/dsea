@@ -8,12 +8,11 @@ const Header = () => {
   return (
     <div
       className={cx(
-        "w-full h-full max-h-[108px] flex items-center justify-end gap-6 pr-[24px]"
+        "w-full h-full max-h-[80px] flex items-center justify-end gap-6  bg-white/20"
       )}
     >
-      {/* input search */}
-      <div className="h-[60px] w-[420px] relative">
-        <div className="h-[60px] w-[60px] bg-[#D9D9D9]  rounded-[50%]  absolute right-[1px] top-0 flex justify-center items-center">
+      <div className="h-[50px] w-[420px] relative">
+        <div className="h-[50px] w-[60px] bg-[#D9D9D9]  rounded-[50%]  absolute right-[1px] top-0 flex justify-center items-center">
           <img src={images.searchIcon} alt="icon-search" className="" />
         </div>
         <input
@@ -24,7 +23,7 @@ const Header = () => {
       </div>
 
       {/* box amount */}
-      <div className="h-[60px] w-[255px] bg-[var(--primary)] py-[12px] px-[20px] rounded-[200px] flex justify-center items-center">
+      <div className="h-[50px] w-[255px] bg-[var(--primary)] py-[12px] px-[20px] rounded-[200px] flex justify-center items-center">
         <p className="text-[24px] font-semibold">10.5842 $hark</p>
       </div>
 
@@ -47,8 +46,6 @@ const Header = () => {
           className="h-[20px] text-[#275D73]"
         />
       </div>
-
-      
     </div>
   );
 };

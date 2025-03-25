@@ -1,6 +1,6 @@
-import TreeMapChart from "../../components/TreeMapChart/TreeMapChart";
-import InflowOutflowChart from "../../components/InFlowOutFlow/InFlowOutFlow";
-import LineChart from "../../components/LineChartLightWeight/LineChartLightWeight";
+import TreeMapChart from "../../components/charts/TreeMapChart/TreeMapChart";
+import InflowOutflowChart from "../../components/charts/InFlowOutFlow/InFlowOutFlow";
+import LineChart from "../../components/charts/LineChartLightWeight/LineChartLightWeight";
 import useTickerWS from "../../hooks/useTickerWS";
 import { useEffect } from "react";
 

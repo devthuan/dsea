@@ -1,9 +1,9 @@
-import BarChart from "../components/BarChart/BarChart";
-import BarChartRechart from "../components/BarChartRechart/BarChartRechart";
-import CandlestickVolume from "../components/CandlestickVolume/CandlestickVolume";
-import CandlestickRealTime from "../components/CandlestickVolume/CandlestickVolume";
-import LineChart from "../components/LineChartLightWeight/LineChartLightWeight";
-import NetFlowChart from "../components/NetFlowChart/NetFlowChart";
+import BarChart from "../components/charts/BarChart/BarChart";
+import BarChartRechart from "../components/charts/BarChartRechart/BarChartRechart";
+import CandlestickVolume from "../components/charts/CandlestickVolume/CandlestickVolume";
+import CandlestickRealTime from "../components/charts/CandlestickVolume/CandlestickVolume";
+import LineChart from "../components/charts/LineChartLightWeight/LineChartLightWeight";
+import NetFlowChart from "../components/charts/NetFlowChart/NetFlowChart";
 import DashboardLayout from "../layouts/DashboardLayout/DashboardLayout";
 import BarChartReChartPage from "../pages/BarChartReChartPage/BarChartReChartPage";
 import CandlestickPage from "../pages/CandlestickPage/CandlestickPage";
@@ -18,9 +18,15 @@ import AreaChartLightWeightPage from "../pages/AreaChartLightWeightPage/AreaChar
 import PieChartPage2 from "../pages/PieChartPage2/PieChartPage2";
 import NetFlowReChartPage from "../pages/NetFlowReChartPage/NetFlowReChartPage";
 import CandlestickVolumePage from "../pages/CandlestickVolumePage/CandlestickVolumePage";
+import Test from "../pages/Test/Test";
+import TopGainer from "../pages/TopGainer/TopGainer";
+import MmActive from "../pages/MmActive/MmActive";
 
 export const publicRoutes = [
   { path: "/", component: Home, layout: DashboardLayout },
+  { path: "/top-gainer", component: TopGainer, layout: DashboardLayout },
+  { path: "/mm-active", component: MmActive, layout: DashboardLayout },
+  { path: "/test", component: Test, layout: DashboardLayout },
   {
     path: "/barChart-rechart",
     component: BarChartReChartPage,

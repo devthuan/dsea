@@ -1,6 +1,6 @@
-import BarChartRechart from "../../components/BarChartRechart/BarChartRechart";
-import InFlowOutFlowChart from "../../components/InFlowOutFlow/InFlowOutFlow";
-import NetFlowChart from "../../components/NetFlowChart/NetFlowChart";
+import BarChartRechart from "../../components/charts/BarChartRechart/BarChartRechart";
+import InFlowOutFlowChart from "../../components/charts/InFlowOutFlow/InFlowOutFlow";
+import NetFlowChart from "../../components/charts/NetFlowChart/NetFlowChart";
 
 const NetFlowLightWeightPage = () => {
   const btcPriceData = [
