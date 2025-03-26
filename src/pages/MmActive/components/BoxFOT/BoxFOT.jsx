@@ -3,7 +3,7 @@ import InFlowOutFlow from "../../../../components/charts/InFlowOutFlow/InFlowOut
 import NetFlowChart from "../../../../components/charts/NetFlowChart/NetFlowChart";
 import TabButtons from "../../../../components/TabButtons/TabButtons";
 import ButtonCustom from "../../../../components/ButtonCustom/ButtonCustom";
-import CandlestickVolume from "../../../../components/CandlestickVolume/CandlestickVolume";
+import CandlestickVolume from "../../../../components/charts/CandlestickVolume/CandlestickVolume";
 const BoxFOT = () => {
   const [activeTab, setActiveTab] = useState("flows");
 
@@ -45,7 +45,7 @@ const BoxFOT = () => {
     { time: "2018-10-22", open: 54.98, high: 55.2, low: 54.8, close: 54.98 },
     { time: "2018-10-23", open: 57.21, high: 57.5, low: 56.9, close: 57.21 },
     { time: "2018-10-24", open: 57.42, high: 57.8, low: 57.1, close: 53.42 },
-    { time: "2018-10-25", open: 56.43, high: 56.8, low: 56.2, close: 56.43 },
+    { time: "2018-10-25", open: 60.43, high: 80.8, low: 56.2, close: 70.43 },
     { time: "2018-10-26", open: 55.51, high: 56.0, low: 55.2, close: 55.51 },
     { time: "2018-10-29", open: 56.48, high: 57.0, low: 56.2, close: 56.48 },
     { time: "2018-10-30", open: 58.18, high: 58.5, low: 65.8, close: 58.18 },
@@ -346,6 +346,11 @@ const BoxFOT = () => {
     { time: "2019-05-28", value: 3097125.0, color: "#26a69a" },
   ];
 
+  const tradePoints = [
+    { time: "2018-10-25", price: 60, type: "buy" },
+    { time: "2018-10-26", price: 55, type: "sell" },
+  ];
+
   return (
     <div className="w-full h-full  rounded-[32px] p-[24px] bg-white">
       <div className="mt-4 ">
@@ -360,8 +365,13 @@ const BoxFOT = () => {
       <div className="mt-[27px]">
         {activeTab === "flows" && <NetFlowChart data={btcData} />}
         {activeTab === "aum" && <div>Nội dung của AUM</div>}
-        {activeTab === "marketCap" && <CandlestickVolume dataPrice={dataPrice} dataVolume={dataVolume} />}
-
+        {activeTab === "marketCap" && (
+          <CandlestickVolume
+            dataPrice={dataPrice}
+            dataVolume={dataVolume}
+            tradePoints={tradePoints}
+          />
+        )}
       </div>
     </div>
   );

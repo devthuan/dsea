@@ -17,6 +17,7 @@ import arrowUpIcon from "/src/assets/arrow-up-icon.svg";
 import triangleDownIcon from "/src/assets/triangle-down-icon.svg";
 import triangleUpIcon from "/src/assets/triangle-up-icon.svg";
 import coinIcon from "/src/assets/coin-icon.svg";
+import sendIcon from "/src/assets/send-icon.svg";
 
 export const images = {
   reactIcon: reactIcon,
@@ -38,6 +39,7 @@ export const images = {
   triangleDownIcon: triangleDownIcon,
   triangleUpIcon: triangleUpIcon,
   coinIcon: coinIcon,
+  sendIcon: sendIcon,
 };
 
 export const ArrowDownIcon = ({ className }) => {

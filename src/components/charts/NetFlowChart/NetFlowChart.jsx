@@ -31,7 +31,7 @@ const NetFlowChart = ({ data = [] }) => {
           label={{
             angle: -90,
             position: "insideLeft",
-            value: "Inflow / Outflow",
+            // value: "Inflow / Outflow",
           }}
           tickFormatter={(value) => `${value.toLocaleString()}`}
         />
@@ -43,7 +43,7 @@ const NetFlowChart = ({ data = [] }) => {
           label={{
             angle: -90,
             position: "insideRight",
-            value: "BTC Price ($)",
+            // value: "BTC Price ($)",
           }}
           domain={[0, "auto"]} // giá tối thiểu là 0
           tickFormatter={(value) => `${value.toLocaleString()}`}

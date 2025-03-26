@@ -4,14 +4,6 @@ import TabButtons from "../../components/TabButtons/TabButtons";
 import BoxChartHolding from "./components/BoxChartHolding/BoxChartHolding";
 
 const Deepsea = () => {
-  const [activeTab, setActiveTab] = useState("flows");
-
-  const tabsData = [
-    { id: "flows", label: "Chain" },
-    { id: "aum", label: "Asset" },
-    { id: "marketCap", label: "Category" },
-  ];
-
   return (
     <div className={"w-full h-full "}>
       <div className="justify-start text-black text-2xl font-semibold font-['Inter']">
@@ -22,11 +14,11 @@ const Deepsea = () => {
       </div>
 
       <div className="w-full mt-6">
-        <div className="w-full grid grid-cols-5 bg-white rounded-[32px] gap-4">
-          <div className="col-span-2">
+        <div className="w-full grid grid-cols-3 bg-white rounded-[32px] gap-4">
+          <div className="col-span-1">
             <BoxTableToken />
           </div>
-          <div className="col-span-3 ">
+          <div className="col-span-2 ">
             <BoxChartHolding />
           </div>
         </div>

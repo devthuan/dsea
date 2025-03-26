@@ -22,12 +22,16 @@ import Test from "../pages/Test/Test";
 import TopGainer from "../pages/TopGainer/TopGainer";
 import MmActive from "../pages/MmActive/MmActive";
 import Deepsea from "../pages/Deepsea/Deepsea";
+import OrderHistory from "../pages/OrderHistory/OrderHistory";
+import ShakeAI from "../pages/SharkAI/ShakeAI";
 
 export const publicRoutes = [
   { path: "/", component: Home, layout: DashboardLayout },
   { path: "/top-gainer", component: TopGainer, layout: DashboardLayout },
   { path: "/mm-active", component: MmActive, layout: DashboardLayout },
   { path: "/deep-sea", component: Deepsea, layout: DashboardLayout },
+  { path: "/order-history", component: OrderHistory, layout: DashboardLayout },
+  { path: "/shark-ai", component: ShakeAI, layout: DashboardLayout },
   { path: "/test", component: Test, layout: DashboardLayout },
   {
     path: "/barChart-rechart",

@@ -47,9 +47,7 @@ const TabButtons = ({ tabs, activeTab, onTabClick, tabType = "type1" }) => {
             size="small"
             onClick={() => onTabClick(tab.id)}
             className={`${
-              activeTab === tab.id
-                ? "text-[#76E1DB] "
-                : "hover:text-[#76e1db]"
+              activeTab === tab.id ? "text-blue-400" : "hover:text-[#76e1db]"
             }`}
           />
         ))}
