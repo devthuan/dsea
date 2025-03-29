@@ -28,7 +28,7 @@ const coloums = ["#", "Name", "Price", "24h Change", "Net Inflow"];
 const BoxTableTopPerformance = () => {
   return (
     <div className="w-full h-full">
-      <div className="w-full h-full bg-white rounded-[32px] p-[24px] flex flex-col gap-y-[16px]">
+      <div className="w-full h-full bg-white/70 shadow-md rounded-[32px] p-[24px] flex flex-col gap-y-[16px]">
         <div className="w-full h-full">
           <h1 className="mb-[32px] justify-start text-black text-2xl font-normal font-['Poppins'] leading-9">
             Top performance altcoin

@@ -4,6 +4,7 @@ import NetFlowChart from "../../../../components/charts/NetFlowChart/NetFlowChar
 import TabButtons from "../../../../components/TabButtons/TabButtons";
 import { images } from "../../../../assets";
 import TableCustom from "../../../../components/TableCustom/TableCustom";
+import LineChartReChart2 from "../../../../components/charts/LineChartReChart2/LineChartReChart2";
 const BoxNarrativePerformance = () => {
   const [activeTab, setActiveTab] = useState("24h");
 
@@ -92,6 +93,21 @@ const BoxNarrativePerformance = () => {
 
       <div className="grid grid-cols-2 gap-3 ">
         <div className="mt-[20px] grid grid-cols-3 gap-3 border-r-[1px] border-black pr-[16px]">
+          <div className="w-full h-[92px] bg-white p-3 rounded-lg  flex  flex-col justify-start items-start border-[2px] border-black">
+            <div className="w-[41px] flex flex-col justify-start items-start">
+              <div className="self-stretch text-center justify-center text-black text-xs font-medium font-['Poppins'] leading-snug">
+                3.96%
+              </div>
+              <div className="self-stretch justify-center text-black text-base font-medium font-['Poppins'] leading-snug">
+                All
+              </div>
+            </div>
+            <div className="w-full flex justify-between text-black text-xs font-medium font-['Poppins'] leading-snug">
+              <div className="w-full h-full"></div>
+              <div className="">3.96%</div>
+            </div>
+          </div>
+
           {activeTab === "24h" &&
             cardPriceData?.map((item, index) => {
               return cartPrice(item, index);
@@ -110,10 +126,19 @@ const BoxNarrativePerformance = () => {
 };
 
 const cartPrice = (data, index) => {
+  const dataChart = [
+    { name: "Page A", uv: 4000, pv: 2400, amt: 2400 },
+    { name: "Page B", uv: 3000, pv: 1398, amt: 2210 },
+    { name: "Page C", uv: 2000, pv: 9800, amt: 2290 },
+    { name: "Page D", uv: 2780, pv: 3908, amt: 2000 },
+    { name: "Page E", uv: 1890, pv: 4800, amt: 2181 },
+    { name: "Page F", uv: 2390, pv: 3800, amt: 2500 },
+    { name: "Page G", uv: 3490, pv: 4300, amt: 2100 },
+  ];
   return (
     <div
       key={index}
-      className="w-full h-[92px] p-3 rounded-lg outline outline-1 outline-offset-[-1px] outline-black inline-flex flex-col justify-start items-start"
+      className="w-full h-[92px] bg-white p-3 rounded-lg  flex  flex-col justify-start items-start shadow-md"
     >
       <div className="w-[41px] flex flex-col justify-start items-start">
         <div className="self-stretch text-center justify-center text-black text-xs font-medium font-['Poppins'] leading-snug">
@@ -123,8 +148,9 @@ const cartPrice = (data, index) => {
           {data.label}
         </div>
       </div>
-      <div className="w-full text-right justify-center text-black text-xs font-medium font-['Poppins'] leading-snug">
-        {data.percentageChange}
+      <div className="w-full flex justify-between text-black text-xs font-medium font-['Poppins'] leading-snug">
+        <div className="w-full h-full"></div>
+        <div className="">{data.percentageChange}</div>
       </div>
     </div>
   );
@@ -134,7 +160,7 @@ const tableGenerate = (dataContent) => {
   return (
     <table className="w-full h-auto border-none">
       <thead>
-        <tr className="text-[#76E1DB]">
+        <tr className="text-black">
           <th className="p-2 text-left">#</th>
           <th className="p-2 text-left">Name</th>
           <th className="p-2 text-left">Price</th>

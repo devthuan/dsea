@@ -24,6 +24,7 @@ import MmActive from "../pages/MmActive/MmActive";
 import Deepsea from "../pages/Deepsea/Deepsea";
 import OrderHistory from "../pages/OrderHistory/OrderHistory";
 import ShakeAI from "../pages/SharkAI/ShakeAI";
+import CandlestickChart from "../components/charts/CandlestickChart/CandlestickChart";
 
 export const publicRoutes = [
   { path: "/", component: Home, layout: DashboardLayout },
@@ -78,7 +79,7 @@ export const publicRoutes = [
 
   {
     path: "/candleStrick",
-    component: CandlestickVolumePage,
+    component: CandlestickPage,
     layout: DashboardLayout,
   },
   {

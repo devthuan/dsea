@@ -11,7 +11,7 @@ const BoxNotification = ({
 }) => {
   return (
     <div
-      className={`${width} ${height} p-5 rounded-2xl border border-black flex flex-col gap-2 bg-white overflow-hidden ${className}`}
+      className={`${width} ${height} p-5 rounded-2xl  flex flex-col gap-2 bg-white overflow-hidden ${className}`}
     >
       {/* Header */}
       <div className="flex items-center gap-2">

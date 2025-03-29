@@ -10,7 +10,7 @@ import BoxPerform from "../Home/components/BoxPerform/BoxPerform";
 const Home = () => {
   return (
     <div className={"w-full h-full "}>
-      <div className="px-6 py-2 bg-[#76e1db] rounded-[60px] inline-flex justify-center items-center gap-1">
+      {/* <div className="px-6 py-2 bg-[#76e1db] rounded-[60px] inline-flex justify-center items-center gap-1">
         <div className="justify-start text-[#0c2c40] text-lg font-bold font-['Inter']">
           My Dashboard
         </div>
@@ -37,9 +37,9 @@ const Home = () => {
             iconRight={images.backArrowIcon}
           />
         </div>
-      </div>
+      </div> */}
 
-      <div className="my-[30px] gap-2 ">
+      {/* <div className="my-[30px] gap-2 ">
         <BoxNotification
           type={"PEPE"}
           time={"6h ago"}
@@ -48,7 +48,7 @@ const Home = () => {
             "is simply dummy text of the printing and typesetting industry"
           }
         />
-      </div>
+      </div> */}
 
       <div className="mt-[30px] w-full h-full max-h-[660px] grid grid-cols-2 gap-4">
         <div className="">
@@ -59,7 +59,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="mt-[30px] w-full h-full rounded-[32px] p-[24px] bg-white gap-4">
+      <div className="mt-[30px] w-full h-full rounded-[32px] p-[24px] bg-white/50 shadow-lg gap-4">
         <BoxNarrativePerformance />
       </div>
 

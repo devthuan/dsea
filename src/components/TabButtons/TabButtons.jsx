@@ -5,12 +5,14 @@ const TabButtons = ({ tabs, activeTab, onTabClick, tabType = "type1" }) => {
 
   const tabTypes = {
     type1: (
-      <div className="h-[26px] px-4 py-2 rounded-[40px] outline outline-1 outline-offset-[-1px] outline-black inline-flex justify-start items-center gap-4">
+      <div className="h-[26px] w-fit px-4 py-4  rounded-[40px] outline outline-1 outline-offset-[-1px] outline-black inline-flex justify-start items-center gap-4">
         {tabs.map((tab) => (
           <button
             key={tab.id}
-            className={`rounded-[20px] text-xs font-normal font-['Inter'] transition-all ${
-              activeTab === tab.id ? "text-[#76e1db]" : "hover:text-[#76e1db]"
+            className={`rounded-[20px] text-sm  font-['Inter'] transition-all ${
+              activeTab === tab.id
+                ? "text-white bg-black/90 px-3 py-1 font-semibold"
+                : "hover:text-black"
             }`}
             onClick={() => onTabClick(tab.id)}
           >
@@ -28,11 +30,12 @@ const TabButtons = ({ tabs, activeTab, onTabClick, tabType = "type1" }) => {
             text={tab.label}
             onClick={() => onTabClick(tab.id)}
             size="small"
-            className={`${
+            className={`  font-['Inter'] transition-all  ${
               activeTab === tab.id
-                ? "text-[#76E1DB] bg-[#0C2C40]"
-                : "hover:text-[#76e1db]"
+                ? "text-[#76E1DB]  font-bold"
+                : "hover:text-black"
             }`}
+            variant={`${activeTab === tab.id ? "primary" : "default"}`}
           />
         ))}
       </div>
@@ -47,8 +50,11 @@ const TabButtons = ({ tabs, activeTab, onTabClick, tabType = "type1" }) => {
             size="small"
             onClick={() => onTabClick(tab.id)}
             className={`${
-              activeTab === tab.id ? "text-blue-400" : "hover:text-[#76e1db]"
+              activeTab === tab.id
+                ? "text-[#76e1db] font-bold"
+                : "hover:text-black"
             }`}
+            variant={`${activeTab === tab.id ? "secondary" : ""}`}
           />
         ))}
       </div>
@@ -62,10 +68,9 @@ const TabButtons = ({ tabs, activeTab, onTabClick, tabType = "type1" }) => {
             size="large"
             onClick={() => onTabClick(tab.id)}
             className={`${
-              activeTab === tab.id
-                ? "text-[#76E1DB] bg-[#0C2C40]"
-                : "hover:text-[#76e1db]"
+              activeTab === tab.id ? "text-[#76E1DB] font-semibold" : "hover:text-black"
             }`}
+            variant={`${activeTab === tab.id ? "primary" : "default"}`}
           />
         ))}
       </div>

@@ -38,7 +38,7 @@ const BoxFearGear = () => {
 
   return (
     <div className="w-full h-full">
-      <div className="w-full h-full bg-white rounded-[32px] p-[24px] flex flex-col gap-y-[16px]">
+      <div className="w-full h-full bg-white/70 shadow-md rounded-[32px] p-[24px] flex flex-col gap-y-[16px]">
         <h1 className="h-auto justify-start text-black text-2xl font-semibold font-['Inter']">
           Fear & Gear Index
         </h1>

@@ -47,7 +47,7 @@ const BoxPerform = () => {
   ];
 
   return (
-    <div className="w-full h-full bg-white rounded-[32px] p-[24px]">
+    <div className="w-full h-full bg-white/70 shadow-lg rounded-[32px] p-[24px]">
       <div className="flex gap-4 mb-[17px]">
         {/* <div className="px-6 py-3 bg-[#76e1db] rounded-[40px] inline-flex flex-col justify-center items-center gap-3">
           <div className="self-stretch justify-start text-[#0c2c40] text-base font-medium font-['Inter']">
@@ -77,7 +77,7 @@ const tableGenerate = (dataContent) => {
   return (
     <table className="w-full h-auto border-none">
       <thead>
-        <tr className="text-[#76E1DB]">
+        <tr className="text-black">
           <th className="p-2 text-left">#</th>
           <th className="p-2 text-left">Name</th>
           <th className="p-2 text-left">Price</th>

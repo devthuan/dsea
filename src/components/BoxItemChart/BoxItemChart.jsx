@@ -26,7 +26,7 @@ const BoxItemChart = ({
           <div className="flex gap-4">
             <img className="w-[44px] h-auto" src={icon} alt="icon" />
             <div>
-              <p className="text-p5 text-base font-semibold font-['Poppins']">
+              <p className=" text-xl font-semibold font-['Poppins']">
                 {title}
               </p>
               <p className="opacity-60 text-p5 text-xs font-normal font-['Poppins']">
@@ -40,9 +40,9 @@ const BoxItemChart = ({
           />
         </div>
         <div className="h-full flex mt-3">
-          <div className="w-auto h-auto flex flex-col gap-y-3">
+          <div className="w-auto h-auto flex flex-col gap-y-1">
             <p
-              className={`w-[142px]  text-[21px] font-semibold font-['Poppins'] tracking-wide  `}
+              className={`w-[142px]  text-2xl font-semibold font-['Poppins'] tracking-wide  `}
               style={{ color: textColor }}
             >
               {value}

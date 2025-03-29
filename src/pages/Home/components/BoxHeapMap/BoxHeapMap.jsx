@@ -30,7 +30,7 @@ const BoxHeapMap = () => {
 
   return (
     <div className="">
-      <div className="bg-white rounded-[32px] p-[24px] flex flex-col gap-y-[16px]">
+      <div className="bg-white/70 shadow-lg rounded-[32px] p-[24px] flex flex-col gap-y-[16px]">
         <h1 className="justify-start text-black text-2xl font-semibold font-['Inter']">
           Narratives performance
         </h1>
@@ -39,7 +39,7 @@ const BoxHeapMap = () => {
             tabs={tabsData}
             activeTab={activeTab}
             onTabClick={setActiveTab}
-            tabType="type3"
+            tabType="type2"
           />
 
           <div className=" inline-flex justify-start items-start gap-2.5">

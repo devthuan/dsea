@@ -40,11 +40,11 @@ const BoxBtcNetFlow = () => {
   ];
 
   return (
-    <div className="w-full h-full  rounded-[32px] p-[24px] bg-white">
-      <h1 className="justify-start text-black text-2xl font-semibold font-['Inter']">
+    <div className="w-full h-full  rounded-[32px] p-[24px] bg-white/70 shadow-lg">
+      <h1 className="justify-start text-black text-2xl font-bold font-['Inter']">
         Bitcoin Exchange Net Flow
       </h1>
-      <div className="mt-4 ">
+      <div className="mt-4 w-auto ">
         <TabButtons
           tabs={tabsData}
           activeTab={activeTab}

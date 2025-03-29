@@ -15,16 +15,16 @@ const ButtonCustom = ({
 }) => {
   // Xác định kích thước
   const sizeClasses = {
-    small: "px-3 py-1 text-xs",
+    small: "px-4 py-1 text-sm",
     medium: "px-4 py-2 text-sm",
     large: "px-6 py-3 text-base",
   };
 
   // Xác định kiểu
   const variantClasses = {
-    default: "bg-white text-black",
-    primary: "bg-blue-500 text-white",
-    secondary: "bg-gray-500 text-white",
+    default: " text-black",
+    primary: "bg-black text-white",
+    secondary: " bg-black text-white",
     success: "bg-green-500 text-white",
     danger: "bg-red-500 text-white",
   };
