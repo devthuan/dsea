@@ -1,9 +1,4 @@
-import classNames from "classnames/bind";
-import styles from "./BoxEntites.module.scss";
-import { images } from "../../../../assets";
-
-// eslint-disable-next-line no-unused-vars
-const cx = classNames.bind(styles);
+import { images } from "@assets";
 
 const data = [
   {

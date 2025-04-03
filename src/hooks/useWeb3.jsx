@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import Web3 from "web3";
 import {
-  CONTRACT_ABI as DEFAULT_ABI,
-  CONTRACT_ADDRESS as DEFAULT_ADDRESS,
+  CONTRACT_ABI_DAY as DEFAULT_ABI,
+  CONTRACT_ADDRESS_DAY as DEFAULT_ADDRESS,
   PROVIDER_URL as DEFAULT_PROVIDER_URL,
   PRIVATE_KEY as DEFAULT_PRIVATE_KEY,
 } from "../config/smartContract";
@@ -25,11 +25,9 @@ const useWeb3 = ({
         setIsLoading(true);
         let web3Instance;
 
-      
-
-          web3Instance = new Web3(
-            new Web3.providers.WebsocketProvider(providerUrl)
-          );
+        web3Instance = new Web3(
+          new Web3.providers.WebsocketProvider(providerUrl)
+        );
 
         const contractInstance = new web3Instance.eth.Contract(
           contractAbi,

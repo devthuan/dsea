@@ -2,7 +2,6 @@ import { images } from "../../assets";
 import InFlowOutFlow from "../../components/charts/InFlowOutFlow/InFlowOutFlow";
 import TreeMapChart from "../../components/charts/TreeMapChart/TreeMapChart";
 import BoxNotification from "../Home/components/BoxNotification/BoxNotification";
-import BoxBtcNetFlow from "../Home/components/BoxBtcNetFlow/BoxBtcNetFlow";
 import ButtonCustom from "../../components/ButtonCustom/ButtonCustom";
 import BoxNarrativePerformance from "../Home/components/BoxNarrativePerformance/BoxNarrativePerformance";
 import BoxHeapMap from "../Home/components/BoxHeapMap/BoxHeapMap";

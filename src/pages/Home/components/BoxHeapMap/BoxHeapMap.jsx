@@ -4,12 +4,14 @@ import TreeMapChart from "../../../../components/charts/TreeMapChart/TreeMapChar
 import useTickerWS from "../../../../hooks/useTickerWS";
 import TabButtons from "../../../../components/TabButtons/TabButtons";
 import { useState } from "react";
+import { data } from "autoprefixer";
 
 // eslint-disable-next-line no-unused-vars
 const cx = classNames.bind(styles);
 
 const BoxHeapMap = () => {
   const dataTop10Token = useTickerWS();
+  // console.log(dataTop10Token)
 
   const [activeTab, setActiveTab] = useState("Memes");
   const [activeTabTime, setActiveTabTime] = useState("24h");

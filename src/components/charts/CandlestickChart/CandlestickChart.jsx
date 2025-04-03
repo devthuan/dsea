@@ -22,8 +22,6 @@ const CandlestickChart = ({ data, width = "100%", height = "300" }) => {
       },
     });
 
-    
-
     const series = chart.addSeries(CandlestickSeries,{
       upColor: "#26a69a",
       downColor: "#ef5350",
@@ -53,7 +51,7 @@ const CandlestickChart = ({ data, width = "100%", height = "300" }) => {
           low: parseFloat(item[3]),
           close: parseFloat(item[4]),
         }));
-
+        
         // Kết hợp dữ liệu API và `props.data`
         const mergedData = [...candles, ...data];
 

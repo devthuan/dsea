@@ -1,0 +1,114 @@
+
+// 1. Dashboard
+
+// Bitcoin exchange net flow | Net flow chart 
+{
+    "timestamp": "1743575040000",
+    "inflow": "15.34210000",
+    "outflow": "8.91765000",
+    "balance": "1234.56789000",
+    "symbol": "USDT",
+    "exchange": "Binance",
+
+    // optional
+    "asset_type": "Stablecoin",
+    "transaction_count": "123"
+}
+
+// Stablecoin exchange net flow | Net flow chart 
+{
+    "timestamp": "1743575040000",
+    "inflow": "15.34210000",
+    "outflow": "8.91765000",
+    "price": "1234.56789000",
+    "symbol": "BTC",
+    "exchange": "Binance",
+
+    // optional
+    "asset_type": "Bitcoin",
+    "transaction_count": "123"
+}
+
+
+// HEATMAP (dashboard)  | treemap
+[
+    {
+    "tag": "POW",
+    "children": [
+            {
+                "name": "BTC",
+                "price": 33058.73,
+
+                // chỉnh số tính tăng trưởng của token
+                "change_percent": 2.5,
+                "volume": 1125808000,
+                "market_cap": 1670000000000,
+            }
+                
+        ],
+    },  
+    {
+    "tag": "Layer 0",
+    "children": [
+            {
+                "name": "ETH",
+                "price": 33058.73,
+
+                // chỉnh số tính tăng trưởng của token
+                "change_percent": 2.5,
+                "volume": 1125808000,
+                "market_cap": 1670000000000,
+            }            
+        ],
+    },  
+]
+
+
+// 2. Asset
+
+
+// Bitcoin Dominate | line chart
+{
+    "timestamp": "1743575040000",
+    "value": "63%",
+
+    // optional
+    "volume": "123123123",
+    "symbol": "Bitcoin",
+}
+
+// Fear & Gear index | pie chart
+{
+    "timestamp": "123123435",
+    "value": "56",
+    "status": "Extreme fear"
+}
+
+// whales' analytics - net inflow/outflow || net flow chart
+{
+    "timestamp": "1743575040000",
+    "inflow": "15.34210000",
+    "outflow": "8.91765000",
+    "balance": "123123",
+    "status": "strong sell"
+}
+
+    
+// Candle Chart 
+{
+    "openTime": "1743575040000",
+    "closeTime": "1743575099999",
+    "symbol": "BTCUSDT",
+    "open": "84031.12000000",
+    "close": "84001.00000000",
+    "high": "84031.12000000",
+    "low": "84001.00000000",
+    "volume": "2.72331000", // tính theo BTC
+    "numberOfTrades": "1106", // số lượng giao dịch
+    "takerBuyBaseVol": "1.25465000", // khối lượng mua tính bằng BTC
+    "takerBuyQuoteVol": "105403.32130740", // khối lượng mua tính bằng USDT
+    "x": "false"  // tính hiệu đóng nến
+}
+
+//  heap map
+  

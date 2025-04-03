@@ -1,12 +1,8 @@
-import { images } from "../../assets";
-import InFlowOutFlow from "../../components/charts/InFlowOutFlow/InFlowOutFlow";
-import TreeMapChart from "../../components/charts/TreeMapChart/TreeMapChart";
-import BoxNotification from "../Home/components/BoxNotification/BoxNotification";
-import BoxBtcNetFlow from "../Home/components/BoxBtcNetFlow/BoxBtcNetFlow";
-import ButtonCustom from "../../components/ButtonCustom/ButtonCustom";
 import BoxNarrativePerformance from "../Home/components/BoxNarrativePerformance/BoxNarrativePerformance";
 import BoxHeapMap from "../Home/components/BoxHeapMap/BoxHeapMap";
 import BoxPerform from "../Home/components/BoxPerform/BoxPerform";
+import StableCoinNetFlow from "./components/StableCoinNetFlow/StableCoinNetFlow";
+import BitcoinNetFlow from "./components/BitcoinNetFlow/BitcoinNetFlow";
 const Home = () => {
   return (
     <div className={"w-full h-full "}>
@@ -52,10 +48,12 @@ const Home = () => {
 
       <div className="mt-[30px] w-full h-full max-h-[660px] grid grid-cols-2 gap-4">
         <div className="">
-          <BoxBtcNetFlow />
+          {/* bitcoin netFlow */}
+          <BitcoinNetFlow />
         </div>
+        {/* stablecoin netFlow */}
         <div className="">
-          <BoxBtcNetFlow />
+          <StableCoinNetFlow />
         </div>
       </div>
 
@@ -66,6 +64,7 @@ const Home = () => {
       <div className="mt-[30px] grid grid-cols-2 gap-4">
         <div className="">
           <BoxHeapMap />
+          {/* <TreeMapChart2 /> */}
         </div>
         <div className="">
           <BoxPerform />

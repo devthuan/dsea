@@ -1,8 +1,4 @@
-import classNames from "classnames/bind";
-import styles from "./BoxTableTopPerformance.module.scss";
 import { images } from "../../../../assets";
-
-const cx = classNames.bind(styles);
 
 const data = [
   {

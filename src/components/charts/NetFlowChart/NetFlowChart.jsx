@@ -9,6 +9,7 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  Cell,
 } from "recharts";
 
 const NetFlowChart = ({ data = [] }) => {
@@ -68,21 +69,14 @@ const NetFlowChart = ({ data = [] }) => {
           }}
         />
 
-        {/* Cột xanh lá cho dòng tiền vào */}
-        <Bar
-          yAxisId="left"
-          dataKey="inflow"
-          fill="oklch(0.527 0.154 150.069)"
-          name="InFlow"
-        />
-
-        {/* Cột đỏ cho dòng tiền ra */}
-        <Bar
-          yAxisId="left"
-          dataKey="outflow"
-          fill="oklch(0.577 0.245 27.325)"
-          name="OutFlow"
-        />
+       <Bar yAxisId="left" dataKey="netFlow" name="Net Flow" barSize={10}>
+          {processedData.map((entry, index) => (
+            <Cell
+              key={`cell-${index}`}
+              fill={entry.netFlow >= 0 ? "#0ECB81" : "#F6465D"} // Xanh nếu dương, đỏ nếu âm
+            />
+          ))}
+        </Bar>
 
         {/* Đường cam cho BTC Price (Sử dụng yAxisId="right") */}
         <Line

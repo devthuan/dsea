@@ -1,16 +1,16 @@
 import { useState, useEffect, useCallback } from "react";
 import Web3 from "web3";
 import {
-  CONTRACT_ABI,
-  CONTRACT_ADDRESS,
+  CONTRACT_ABI_DAY,
+  CONTRACT_ADDRESS_DAY,
   PROVIDER_URL,
   PRIVATE_KEY,
 } from "../config/smartContract";
 
 const useWeb3Contract = ({
   providerUrl = PROVIDER_URL,
-  contractAddress = CONTRACT_ADDRESS,
-  contractAbi = CONTRACT_ABI,
+  contractAddress = CONTRACT_ADDRESS_DAY,
+  contractAbi = CONTRACT_ABI_DAY,
   privateKey = PRIVATE_KEY,
 }) => {
   const [web3, setWeb3] = useState(null);

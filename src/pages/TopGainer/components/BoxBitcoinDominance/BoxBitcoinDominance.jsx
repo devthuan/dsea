@@ -1,13 +1,8 @@
-import classNames from "classnames/bind";
-import styles from "./BoxBitcoinDominance.module.scss";
-import TreeMapChart from "../../../../components/charts/TreeMapChart/TreeMapChart";
-import TabButtons from "../../../../components/TabButtons/TabButtons";
+import TreeMapChart from "@components/charts/TreeMapChart/TreeMapChart";
+import TabButtons from "@components/TabButtons/TabButtons";
 import { useState } from "react";
-import LineChartReChart from "../../../../components/charts/LineChartReChart/LineChartReChart";
-import LineChartLightWeight from "../../../../components/charts/LineChartLightWeight/LineChartLightWeight";
-
-// eslint-disable-next-line no-unused-vars
-const cx = classNames.bind(styles);
+import LineChartReChart from "@components/charts/LineChartReChart/LineChartReChart";
+import LineChartLightWeight from "@components/charts/LineChartLightWeight/LineChartLightWeight";
 
 const BoxBitcoinDominance = () => {
   const dataExample = [

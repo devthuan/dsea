@@ -1,8 +1,5 @@
 import { useState } from "react";
 import TabButtons from "../../../../components/TabButtons/TabButtons";
-import TableCustom from "../../../../components/TableCustom/TableCustom";
-import PieChartPage from "../../../PieChartPage/PieChartPage";
-import PieChartPage2 from "../../../PieChartPage2/PieChartPage2";
 import NetFlowChart from "../../../../components/charts/NetFlowChart/NetFlowChart";
 import CryptoPieChart from "../../../../components/charts/CryptPieChart/CryptPieChart";
 
@@ -46,7 +43,6 @@ const BoxChartHolding = () => {
   const dataPieChart2 = [
     { name: "$ETH", value: 36.9, color: "#4CAF50" },
     { name: "$DOGE", value: 15.7, color: "#E91E63" },
-    
   ];
 
   const totalValue = 2.7; // Tổng giá trị (triệu đô)

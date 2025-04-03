@@ -55,12 +55,20 @@ const InFlowOutFlowChart = ({
       },
     });
 
-    chart
-      .priceScale("left")
-      .applyOptions({ position: "left", borderColor: "#26a69a" });
-    chart
-      .priceScale("right")
-      .applyOptions({ position: "right", borderColor: "#f39c12" });
+    chart.priceScale("left").applyOptions({
+      position: "left",
+      borderColor: "#26a69a",
+      autoScale: false, // Tắt tự động co giãn
+      minValue: -1000, // Giá trị nhỏ nhất của trục
+      maxValue: 1000, // Giá trị lớn nhất của trục
+    });
+    chart.priceScale("right").applyOptions({
+      position: "right",
+      borderColor: "#f39c12",
+      autoScale: false, // Tắt tự động co giãn
+      minValue: -1000, // Giá trị nhỏ nhất của trục
+      maxValue: 1000, // Giá trị lớn nhất của trục
+    });
 
     const btcPriceSeries = chart.addSeries(LineSeries, {
       color: "#f39c12",
@@ -71,7 +79,22 @@ const InFlowOutFlowChart = ({
     const inflowOutflowSeries = chart.addSeries(HistogramSeries, {
       priceFormat: { type: "volume" },
       priceScaleId: "left",
+      
     });
+
+    btcPriceSeries.priceScale().applyOptions({
+      autoScale: false, // Ngăn chặn tự động thay đổi trục y
+      minValue: 20000, // Giá trị nhỏ nhất (điều chỉnh theo dữ liệu thực tế)
+      maxValue: 70000, // Giá trị lớn nhất (điều chỉnh theo dữ liệu thực tế)
+    });
+
+
+     inflowOutflowSeries.priceScale().applyOptions({
+       scaleMargins: {
+         top: 0,
+         bottom: 0,
+       },
+     });
 
     btcPriceSeries.setData(
       btcPriceData.map((data) => ({
