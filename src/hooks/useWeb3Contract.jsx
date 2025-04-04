@@ -74,26 +74,6 @@ const useWeb3Contract = ({
     [contract]
   );
 
-  // Lắng nghe sự kiện
-  // const listenToEvent = useCallback(
-  //   (eventName, callback) => {
-  //     if (!contract) return;
-
-  //     const eventListener = contract.events[eventName]()
-  //       .on("data", (event) => {
-  //         setEvents((prev) => ({
-  //           ...prev,
-  //           [eventName]: [...(prev[eventName] || []), event],
-  //         }));
-  //         if (callback) callback(event);
-  //       })
-  //       .on("error", (error) => console.error("Lỗi sự kiện:", error));
-
-  //     return () => eventListener.unsubscribe();
-  //   },
-  //   [contract]
-  // );
-
   const listenToEvent = useCallback(
     (eventName, callback) => {
       if (!contract) {

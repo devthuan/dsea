@@ -66,6 +66,7 @@
 
 // 2. Asset
 
+// 2.1 Asset page 1
 
 // Bitcoin Dominate | line chart
 {
@@ -84,6 +85,21 @@
     "status": "Extreme fear"
 }
 
+
+// 2.2 Asset page 2
+
+// price token | line chart
+{
+    "timestamp": "1743575040000",
+    "name": "Bitcoin", // tên token
+    "symbol": "BTC", // mã token
+    "url_logo": "https://example.com/logo.png", // đường dẫn đến logo token
+    "price": "2500", // giá token tại thời điểm đó
+    "percent_change": "2.5", // phần trăm tăng giá của token
+}
+
+
+
 // whales' analytics - net inflow/outflow || net flow chart
 {
     "timestamp": "1743575040000",
@@ -93,12 +109,66 @@
     "status": "strong sell"
 }
 
-    
-// Candle Chart 
+// Funding rate | net flow chart
+{
+    "timestamp": "1743575040000",
+    "funding_rate": "0.2", // Được biểu diễn bằng các cột màu xanh lá cây (dương) và đỏ (âm), thể hiện tỷ lệ phần trăm.
+    "open_interest": "1234.56789000",  // Open Interest (Số lượng hợp đồng mở): Được biểu diễn bằng đường màu đen, thể hiện giá trị tiền tệ (USD).
+
+    // optional
+
+}
+
+// 2.3 Asset page 3
+
+// on chain  exchange flow  | net flow chart
+{
+    "timestamp": "1743575040000",
+    "symbol": "BTC",
+    "name": "Bitcoin", // tên token
+    "price": "123123",
+    "inflow": "15.34210000",
+    "outflow": "8.91765000",
+}
+
+
+// open interest | 3 đường line (line chart)
+ { 
+    "timestamp": "1743575040000",
+    "price": 20000,   // đường giá 
+    "binanceOI": 10000,
+    "bybitOI": 5000 
+},
+
+
+// 2.4 Asset page 4
+
+// whales' analytics - on-chain exchange flow || net flow chart
+{
+    "timestamp": "1743575040000",
+    "inflow": "15.34210000",
+    "outflow": "8.91765000",
+    "price": "123123",
+}
+
+// whales' analytics - whales' status | pỉe chart
+[
+    {
+        "name": "unrealized gains",
+        "value": 123123,    
+    },
+    {
+        "name": "unrealized losses",
+        "value": 456456,
+    },
+]
+
+// trading view | candle chart
 {
     "openTime": "1743575040000",
     "closeTime": "1743575099999",
     "symbol": "BTCUSDT",
+    "interval": "1m", // 1m, 5m, 15m, 30m, 1h, 4h, 1d  | loại nến
     "open": "84031.12000000",
     "close": "84001.00000000",
     "high": "84031.12000000",
@@ -110,5 +180,14 @@
     "x": "false"  // tính hiệu đóng nến
 }
 
-//  heap map
-  
+
+// 2.5 Asset page 5
+
+// Whale accumulation trend
+{
+    "timestamp": "1743575040000",
+    "accumulation": "123123", // số lượng BTC mà cá voi đã tích lũy
+    "price": "123123", // giá BTC tại thời điểm đó
+}
+
+// 

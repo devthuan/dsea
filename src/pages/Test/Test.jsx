@@ -9,7 +9,11 @@ import CandlestickVolume from "../../components/charts/CandlestickVolume/Candles
 import LineChartLightWeight from "../../components/charts/LineChartLightWeight/LineChartLightWeight";
 import CryptoPieChart from "../../components/charts/CryptPieChart/CryptPieChart";
 import PieChartNeedle from "../../components/charts/PieChartNeedle/PieChartNeedle";
-
+import CustomPieChart from "../../components/charts/PieChart/PieChart";
+import LineChartReChart2 from "../../components/charts/LineChartReChart2/LineChartReChart2";
+import LineChartOI from "../../components/charts/LineChartLightWeight/lineChartOIt";
+import FundingRateChart from "../../components/charts/LineChartReChart/FundingRateChart";
+import { getContractInstance } from "../../services/smartContractService";
 const initDataChartCandle = [
   {
     time: "2018-10-19",
@@ -1281,6 +1285,7 @@ const Test = () => {
   //     });
   //   }
   // }, [contract]);
+console.log(  getContractInstance("ContractNetFLowDay"))
 
   return (
     <div
@@ -1288,7 +1293,10 @@ const Test = () => {
     >
       {/* <CandlestickVolume /> */}
       {/* <LineChartLightWeight /> */}
-      <PieChartNeedle />
+      {/* <PieChartNeedle /> */}
+      {/* <CustomPieChart/> */}
+      {/* <LineChartOI /> */}
+      <FundingRateChart />
     </div>
   );
 };

@@ -4,11 +4,11 @@ import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer } from "recharts";
 const RADIAN = Math.PI / 180;
 
 
-// const sampleData = [
-//   { name: "Group A", value: 400 },
-//   { name: "Group B", value: 300 },
-//   { name: "Group C", value: 300 },
-// ];
+const sampleData = [
+  { name: "Group A", value: 400 },
+  { name: "Group B", value: 300 },
+  { name: "Group C", value: 300 },
+];
 
 
 const renderCustomLabel = ({
@@ -68,7 +68,7 @@ const CustomPieChart = ({
         <Pie
           dataKey="value"
           isAnimationActive={true}
-          data={data}
+          data={sampleData}
           cx="50%"
           cy="50%"
           outerRadius={outerRadius}

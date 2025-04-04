@@ -154,8 +154,8 @@ const StableCoinNetFlowChart = ({ data = [] }) => {
       <ResponsiveContainer width="100%" height={400}>
         <CustomLegend />
         <ComposedChart
-          onWheel={handleWheel}
           data={processedData}
+          onWheel={handleWheel}
           barCategoryGap="0%"
         >
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
