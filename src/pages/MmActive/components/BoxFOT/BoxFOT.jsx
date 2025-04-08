@@ -350,14 +350,13 @@ const btcData = [
 
 const BoxFOT = () => {
   const [activeTab, setActiveTab] = useState("flows");
-
-  const [dataCandle, setDataCandle] = useState(initDataChartCandle);
-
   const tabsData = [
     { id: "flows", label: "Funding Rate" },
     { id: "aum", label: "Open Interest" },
     { id: "marketCap", label: "Trading view" },
   ];
+  
+  const [dataCandle, setDataCandle] = useState(initDataChartCandle);
 
   // logic smart contract
   const { web3, contract, listenToEvent, fetchData } = useWeb3Contract({

@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./features/couter/couterSlice";
+import bitcoinNetFlowReducer from "./features/bitcoinNetFlow/bitcoinNetFlowSlice";
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    bitcoinNetFlow: bitcoinNetFlowReducer,
   },
 });

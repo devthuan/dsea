@@ -2,16 +2,14 @@ import { images } from "../../../../assets";
 
 const data = [
   {
-    id: 1,
-    name: "Bitcoin",
+    name: "Bitcoin : BTC (0x9877) ",
     price: "$100,86B",
     change: 3.96,
     netInflow: "+3.96%",
     icon: images.arrowDownIcon,
   },
   {
-    id: 2,
-    name: "Ethereum",
+    name: "Ethereum : ETH (0x9877) ",
     price: "$50,42B",
     change: 2.51,
     netInflow: "+2.51%",
@@ -19,15 +17,15 @@ const data = [
   },
 ];
 
-const coloums = ["Holder", "Name", "Price", "24h Change", "Net Inflow"];
+const coloums = ["% ví shark đang có lời", "value", "profit", "USD"];
 
-const BoxEntites = () => {
+const BoxSharkWallet = () => {
   return (
     <div className="w-full h-full">
       <div className="w-full h-full bg-white rounded-[32px] p-[24px] flex flex-col gap-y-[16px]">
         <div className="w-full h-full">
           <h1 className="mb-[26px] justify-start text-black text-2xl font-semibold font-['Inter']">
-            Entities
+            Shark's wallet
           </h1>
           <table className="w-full h-auto border-none">
             <thead>
@@ -39,17 +37,11 @@ const BoxEntites = () => {
                     </th>
                   );
                 })}
-                {/* <th className="p-2 text-left">#</th>
-                <th className="p-2 text-left">Name</th>
-                <th className="p-2 text-left">Price</th>
-                <th className="p-2 text-left">24h Change</th>
-                <th className="p-2 text-left">Net Inflow</th> */}
               </tr>
             </thead>
             <tbody>
               {data.map((coin, index) => (
-                <tr key={coin.id}>
-                  <td className="p-2">{index + 1}</td>
+                <tr key={index}>
                   <td className="p-2 flex gap-3 items-center h-full">
                     <div className="w-[24px] h-[24px] bg-black/20 rounded-lg"></div>
                     <div>{coin.name}</div>
@@ -70,4 +62,4 @@ const BoxEntites = () => {
   );
 };
 
-export default BoxEntites;
+export default BoxSharkWallet;

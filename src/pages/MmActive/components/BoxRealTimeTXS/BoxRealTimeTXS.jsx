@@ -19,9 +19,9 @@ const data = [
   },
 ];
 
-const coloums = ["Holder", "Name", "Price", "24h Change", "Net Inflow"];
+const coloums = ["Time", "From", "To", "Token", "USD"];
 
-const BoxEntites = () => {
+const BoxRealTimeTXS = () => {
   return (
     <div className="w-full h-full">
       <div className="w-full h-full bg-white rounded-[32px] p-[24px] flex flex-col gap-y-[16px]">
@@ -70,4 +70,4 @@ const BoxEntites = () => {
   );
 };
 
-export default BoxEntites;
+export default BoxRealTimeTXS;

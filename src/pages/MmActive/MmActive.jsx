@@ -2,6 +2,8 @@ import BoxInformationDetailToken from "./components/BoxInformationDetailToken/Bo
 import BoxEntites from "./components/BoxEntites/BoxEntites";
 import BoxTokenNetFlow from "./components/BoxTokenNetFlow/BoxTokenNetFlow";
 import BoxFOT from "./components/BoxFOT/BoxFOT";
+import BoxSharkWallet from "./components/BoxSharkWallet/BoxSharkWallet";
+import BoxRealTimeTXS from "./components/BoxRealTimeTXS/BoxRealTimeTXS";
 const MmActive = () => {
   return (
     <div className={"w-full h-full "}>
@@ -21,7 +23,7 @@ const MmActive = () => {
           <BoxEntites />
         </div>
         <div className="w-full h-full ">
-          <BoxEntites />
+          <BoxSharkWallet />
         </div>
       </div>
 
@@ -29,7 +31,7 @@ const MmActive = () => {
         <BoxTokenNetFlow />
       </div>
       <div className="mt-[30px] ">
-        <BoxEntites />
+        <BoxRealTimeTXS />
       </div>
       <div className="mt-[30px] ">
         <BoxFOT />

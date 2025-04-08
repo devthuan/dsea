@@ -1,8 +1,8 @@
-import TreeMapChart from "@components/charts/TreeMapChart/TreeMapChart";
-import TabButtons from "@components/TabButtons/TabButtons";
+import TreeMapChart from "../../../../components/charts/TreeMapChart/TreeMapChart";
+import TabButtons from "../../../../components/TabButtons/TabButtons";
 import { useState } from "react";
-import LineChartReChart from "@components/charts/LineChartReChart/LineChartReChart";
-import LineChartLightWeight from "@components/charts/LineChartLightWeight/LineChartLightWeight";
+import LineChartReChart from "../../../../components/charts/LineChartReChart/LineChartReChart";
+import LineChartLightWeight from "../../../../components/charts/LineChartLightWeight/LineChartLightWeight";
 
 const BoxBitcoinDominance = () => {
   const dataExample = [

@@ -28,8 +28,8 @@ import ShakeAI from "../pages/SharkAI/ShakeAI";
 
 export const publicRoutes = [
   { path: "/", component: Home, layout: DashboardLayout },
-  { path: "/top-gainer", component: TopGainer, layout: DashboardLayout },
-  { path: "/mm-active", component: MmActive, layout: DashboardLayout },
+  { path: "/asset", component: TopGainer, layout: DashboardLayout },
+  { path: "/asset/solona", component: MmActive, layout: DashboardLayout },
   { path: "/deep-sea", component: Deepsea, layout: DashboardLayout },
   { path: "/order-history", component: OrderHistory, layout: DashboardLayout },
   { path: "/shark-ai", component: ShakeAI, layout: DashboardLayout },

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import TabButtons from "@components/TabButtons/TabButtons";
-import { images } from "@assets";
+import TabButtons from "../../../../components/TabButtons/TabButtons";
+import { images } from "../../../../assets";
 const BoxNarrativePerformance = () => {
   const [activeTab, setActiveTab] = useState("24h");
 

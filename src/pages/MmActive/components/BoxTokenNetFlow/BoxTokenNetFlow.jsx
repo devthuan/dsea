@@ -3,8 +3,14 @@ import InFlowOutFlow from "../../../../components/charts/InFlowOutFlow/InFlowOut
 import NetFlowChart from "../../../../components/charts/NetFlowChart/NetFlowChart";
 import TabButtons from "../../../../components/TabButtons/TabButtons";
 import ButtonCustom from "../../../../components/ButtonCustom/ButtonCustom";
+import CustomPieChart from "../../../../components/charts/PieChart/PieChart";
+import LineChartOI from "../../../../components/charts/LineChartLightWeight/lineChartOIt";
+import FundingRateChart from "../../../../components/charts/LineChartReChart/FundingRateChart";
+import AccumulationChart from "../../../../components/charts/LineChartReChart/AccumulationChart";
+
 const BoxTokenNetFlow = () => {
-  const [activeTab, setActiveTab] = useState("flows");
+  const [activeTab, setActiveTab] = useState("netflow");
+  const [activeTabPieChart, setActiveTabPieChart] = useState("24h");
 
   const btcData = [
     { name: "2024-01-01", inflow: 32000, outflow: 28000, price: 42000 },
@@ -34,18 +40,19 @@ const BoxTokenNetFlow = () => {
   ];
 
   const tabsData = [
-    { id: "flows", label: "Net Inflow/Outflow" },
-    { id: "aum", label: "On-chain Exchange Flow" },
-    { id: "marketCap", label: "Whales' status" },
-    { id: "volume", label: "Whale accumulation trend" },
+    { id: "netflow", label: "Net Inflow/Outflow" },
+    { id: "exchange", label: "On-chain Exchange Flow" },
+    { id: "whaleStatus", label: "Whales' status" },
+    { id: "accumulation", label: "Whale accumulation trend" },
   ];
 
   return (
-    <div className="w-full h-full  rounded-[32px] p-[24px] bg-white">
-      <h1 className="justify-start text-black text-2xl font-semibold font-['Inter']">
+    <div className="w-full h-full rounded-[32px] p-[24px] bg-white">
+      <h1 className="text-black text-2xl font-semibold font-['Inter']">
         Bitcoin Exchange Net Flow
       </h1>
-      <div className="mt-4 ">
+
+      <div className="mt-4">
         <TabButtons
           tabs={tabsData}
           activeTab={activeTab}
@@ -54,17 +61,75 @@ const BoxTokenNetFlow = () => {
         />
       </div>
 
-      <div className="w-full mt-[10px] flex justify-end gap-2">
-        <ButtonCustom
-          text={"USD"}
-        />
+      <div className="mt-[27px]">
+        {(activeTab === "netflow" || activeTab === "exchange") && (
+          <NetFlowChart data={btcData} />
+        )}
+
+        {activeTab === "whaleStatus" && (
+          <WhaleStatusTab
+            activeTab={activeTabPieChart}
+            onTabChange={setActiveTabPieChart}
+          />
+        )}
+
+        {activeTab === "accumulation" && <AccumulationChart/>}
+      </div>
+    </div>
+  );
+};
+
+const WhaleStatusTab = ({ activeTab, onTabChange }) => {
+  const tabsDataPieChart = [
+    { id: "24h", label: "24h" },
+    { id: "7day", label: "7 day" },
+    { id: "14day", label: "14 day" },
+  ];
+
+  return (
+    <div className="grid grid-cols-3 justify-between">
+      <div className="col-span-2 flex justify-center items-center">
+        <CustomPieChart width={800} height={600} outerRadius={150} />
       </div>
 
-      <div className="mt-[27px]">
-        {activeTab === "flows" && <NetFlowChart data={btcData} />}
-        {activeTab === "aum" && <div>Nội dung của AUM</div>}
-        {activeTab === "marketCap" && <div>Nội dung của Market Cap</div>}
-        {activeTab === "volume" && <div>Nội dung của Volume</div>}
+      <div className="w-[404px] h-[595px] relative overflow-hidden">
+        <div className="absolute left-0 top-[3px] w-[402px] h-[592px] bg-[#d9d9d9]/40 rounded-[20px]" />
+
+        <div className="absolute left-[32px] top-[35px] inline-flex justify-start items-center gap-2">
+          <TabButtons
+            tabs={tabsDataPieChart}
+            activeTab={activeTab}
+            onTabClick={onTabChange}
+            tabType="type2"
+          />
+        </div>
+
+        <div className="absolute left-[32px] top-[105px] flex flex-col gap-10">
+          <div className="flex flex-col gap-3">
+            <div className="text-black text-2xl font-normal font-['Poppins'] leading-[48px]">
+              Whales sold at a loss
+            </div>
+            <div className="text-black text-[64px] font-semibold font-['Poppins'] leading-[48px]">
+              8%
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <div className="text-black text-2xl font-normal font-['Poppins'] leading-[48px]">
+              Whales sold at a profit
+            </div>
+            <div className="text-black text-[64px] font-semibold font-['Poppins'] leading-[48px]">
+              12%
+            </div>
+          </div>
+        </div>
+
+        <div className="absolute left-[32px] top-[401px] w-[338px] h-0 outline outline-2 outline-offset-[-1px] outline-[#4d4d4d]" />
+
+        <div className="absolute left-[32px] top-[417px] w-[338px] text-black text-xs font-normal font-['Poppins']">
+          Whales have sold at a loss or gained a profit over 24 hours, 7 days,
+          and 14 days. This shows the activities of all whales at the moment.
+        </div>
       </div>
     </div>
   );

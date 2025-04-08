@@ -1,6 +1,6 @@
 {
 	"ContractNetFLowDay": {
-		"address": "0x681D7D3A2bB9Ceff563CCAD3cc4E7397B96DC965",
+		"address": "0xaAe7Bf232104BeFcD8697a453cBc49093fb2fDad",
 		"abi": [
 	{
 		"anonymous": false,
@@ -241,7 +241,7 @@
 		"stateMutability": "view",
 		"type": "function"
 	}
-]
+		]
 	}
 
 }
