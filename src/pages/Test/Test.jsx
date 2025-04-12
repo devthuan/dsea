@@ -13,76 +13,51 @@ import LineChartOI from "../../components/charts/LineChartLightWeight/lineChartO
 import FundingRateChart from "../../components/charts/LineChartReChart/FundingRateChart";
 import { getContractInstance } from "../../services/smartContractService";
 import { bitcoinNetFlowServices } from "../../services/dashboard/bitcoinNetFlow";
+import useWeb3 from "../../hooks/useWeb3";
+
+
+
 
 const Test = () => {
-  const updateDataChart = (newData) => {
-    setDataCandle((prevData) => {
-      // Tìm kiếm xem ngày có tồn tại trong dữ liệu trước đó không
-      const existingIndex = prevData.findIndex(
-        (item) => item.time === newData.time
-      );
 
-      // Nếu ngày đã tồn tại, ghi đè dữ liệu
-      if (existingIndex !== -1) {
-        const updatedData = [...prevData];
-        updatedData[existingIndex] = {
-          ...newData, // Ghi đè hoàn toàn dữ liệu cũ bằng dữ liệu mới
-        };
-        return updatedData;
-      } else {
-        // Nếu ngày mới, thêm vào cuối danh sách
-        const lastBalance =
-          prevData.length > 0 ? prevData[prevData.length - 1].balance : 0;
-        return [
-          ...prevData,
-          {
-            time: newData.time,
-            inflow: newData.inflow,
-            outflow: newData.outflow,
-            balance: lastBalance + (newData.inflow - newData.outflow),
-          },
-        ];
-      }
-    });
-  };
-
-  const [candlesticks, setCandlesticks] = useState([]); // Lưu trữ mảng nến
-  const socketRef = useRef(null);
-  const lastCandleRef = useRef(null);
-
+  
   useEffect(() => {
-    async function callBitcoinNetFlow() {
-      const result = await bitcoinNetFlowServices(); // Gọi hàm để bắt đầu lắng nghe sự kiện
-      if (result) {
-        console.log("Dữ liệu từ sự kiện FlowTotalRecorded:", result);
-      } else {
-        console.log("Không có dữ liệu từ sự kiện.");
+    const web3 = new Web3("wss://ethereum-rpc.publicnode.com");
+    const contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
+
+    let subscription;
+
+    const subscribe = async () => {
+      try {
+        subscription = contract.events[EVENT_NAME]({
+          fromBlock: "latest",
+        })
+          .on("data", (event) => {
+            console.log("📦 Event data:", event);
+          })
+          .on("error", (error) => {
+            console.error("❌ Event error:", error);
+          });
+      } catch (error) {
+        console.error("❌ Error during subscription:", error);
       }
-    }
-    callBitcoinNetFlow();
+    };
+
+    subscribe();
+
+    return () => {
+      if (subscription && typeof subscription.unsubscribe === "function") {
+        subscription.unsubscribe((error, success) => {
+          if (success) {
+            console.log("📴 Unsubscribed successfully");
+          } else {
+            console.warn("⚠️ Unsubscribe failed:", error);
+          }
+        });
+      }
+    };
   }, []);
-
-  // useEffect(() => {
-  //   if (contract) {
-  //     listenToEvent("Recorded", (event) => {
-  //       // console.log("event listening:", event.returnValues.formData);
-  //       const result = event.returnValues.formData;
-  //       const timeStamp = Number(result.timestamp);
-
-  //       const dataFormat = {
-  //         time: convertTimestampToDateString(timeStamp, "YYYY-MM-DD"),
-  //         open: parseFloat(result.open),
-  //         high: parseFloat(result.high),
-  //         low: parseFloat(result.low),
-  //         close: parseFloat(result.close),
-  //         value: parseFloat(result.volume),
-  //       };
-  //       console.log(dataFormat)
-  //       updateDataChart(dataFormat);
-  //     });
-  //   }
-  // }, [contract]);
-  console.log(getContractInstance("ContractNetFLowDay"));
+ 
 
   return (
     <div

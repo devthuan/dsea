@@ -218,7 +218,7 @@ const CustomizedContent = ({
   let fillColor = "black"; // Default fill color
 
   if (depth === 1) {
-    fillColor = change_percent > 0 ? "green" : "#FF0000";
+    fillColor = change_percent > 0 ? "#2C954B" : "#FF3A3D";
   }
   const strokeWidth = 2 / (depth + 1e-10);
   const strokeOpacity = 1 / (depth + 1e-10);

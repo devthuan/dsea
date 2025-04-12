@@ -7,6 +7,7 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  Legend,
 } from "recharts";
 
 // Dữ liệu gốc
@@ -69,12 +70,20 @@ const FundingRateChart = () => {
       <ResponsiveContainer width="100%" height={400}>
   <ComposedChart data={mockData}>
     <defs>
+      {/* Gradient mờ từ trên xuống */}
+      <linearGradient id="gradientFill" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#76E1DB" stopOpacity="0.8" />
+        <stop offset="100%" stopColor="#76E1DB" stopOpacity="0" />
+      </linearGradient>
+
+      {/* Drop shadow */}
       <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
         <feDropShadow dx="0" dy="5" stdDeviation="5" floodColor="#76E1DB" floodOpacity="0.5" />
       </filter>
     </defs>
 
-    <CartesianGrid stroke="#e0e0e0" strokeDasharray="3 3" />
+
+    <CartesianGrid stroke="#e0e0e0" strokeDasharray="3 3" vertical={false} />
 
     <XAxis
       dataKey="time"
@@ -92,7 +101,7 @@ const FundingRateChart = () => {
     <YAxis
       yAxisId="right"
       orientation="right"
-      tickFormatter={(v) => `$${(v / 1000000).toFixed(0)}M`}
+      tickFormatter={(v) => `$${(v / 1000).toFixed(0)}M`}
     />
 
     <Tooltip />
@@ -101,11 +110,13 @@ const FundingRateChart = () => {
       yAxisId="right"
       type="linear"
       dataKey="accumulation"
-      stackId="1"
-      fill="#76E1DB"
-      name="accumulation"
+       stroke="#00BFA6"
+      name="Whale accumulation"
       filter="url(#shadow)"
+      fill="url(#gradientFill)"
     />
+   
+
 
     <Line
       yAxisId="left"
@@ -115,6 +126,15 @@ const FundingRateChart = () => {
       strokeWidth={1}
       dot={false}
       name="Price"
+    />
+    <Legend
+      verticalAlign="top"
+      align="left"
+      wrapperStyle={{
+        position: "relative",
+        top: -410, // Dịch xuống dưới
+        right: -50
+      }}
     />
   </ComposedChart>
 </ResponsiveContainer>

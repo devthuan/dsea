@@ -22,6 +22,7 @@ const NetFlowChart = ({ data = [] }) => {
 
   return (
     <ResponsiveContainer width="100%" height={400}>
+      
       <ComposedChart data={processedData} barCategoryGap="0%">
         <CartesianGrid strokeDasharray="3 3" vertical={false} />
         <XAxis dataKey="name" />
@@ -60,6 +61,7 @@ const NetFlowChart = ({ data = [] }) => {
         />
 
         <Legend
+        width={300}
           layout="horizontal"
           verticalAlign="top"
           align="left"
@@ -68,6 +70,8 @@ const NetFlowChart = ({ data = [] }) => {
             top: -410, // Dịch xuống dưới
           }}
         />
+
+      
 
        <Bar yAxisId="left" dataKey="netFlow" name="Net Flow" barSize={10}>
           {processedData.map((entry, index) => (

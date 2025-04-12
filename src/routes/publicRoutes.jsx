@@ -7,7 +7,6 @@
 import DashboardLayout from "../layouts/DashboardLayout/DashboardLayout";
 // import BarChartReChartPage from "../pages/BarChartReChartPage/BarChartReChartPage";
 // import CandlestickPage from "../pages/CandlestickPage/CandlestickPage";
-import Home from "../pages/Home/Home";
 // import LineChartLightWeightPage from "../pages/LineChartLightWeightPage/LineChartLightWeightPage";
 // import LineChartReChartPage from "../pages/LineChartReChartPage/LineChartReChartPage";
 // import NetFlowLightWeightPage from "../pages/NetFlowLightWeightPage/NetFlowLightWeightPage";
@@ -19,17 +18,18 @@ import Home from "../pages/Home/Home";
 // import NetFlowReChartPage from "../pages/NetFlowReChartPage/NetFlowReChartPage";
 // import CandlestickVolumePage from "../pages/CandlestickVolumePage/CandlestickVolumePage";
 import Test from "../pages/Test/Test";
-import TopGainer from "../pages/TopGainer/TopGainer";
-import MmActive from "../pages/MmActive/MmActive";
 import Deepsea from "../pages/Deepsea/Deepsea";
 import OrderHistory from "../pages/OrderHistory/OrderHistory";
 import ShakeAI from "../pages/SharkAI/ShakeAI";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import Asset from "../pages/Asset/Asset";
+import AssetDetail from "../pages/AssetDetail/AssetDetail";
 // import CandlestickChart from "../components/charts/CandlestickChart/CandlestickChart";
 
 export const publicRoutes = [
-  { path: "/", component: Home, layout: DashboardLayout },
-  { path: "/asset", component: TopGainer, layout: DashboardLayout },
-  { path: "/asset/solona", component: MmActive, layout: DashboardLayout },
+  { path: "/", component: Dashboard, layout: DashboardLayout },
+  { path: "/asset", component: Asset, layout: DashboardLayout },
+  { path: "/asset/solona", component: AssetDetail, layout: DashboardLayout },
   { path: "/deep-sea", component: Deepsea, layout: DashboardLayout },
   { path: "/order-history", component: OrderHistory, layout: DashboardLayout },
   { path: "/shark-ai", component: ShakeAI, layout: DashboardLayout },

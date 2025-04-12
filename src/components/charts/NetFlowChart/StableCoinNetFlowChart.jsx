@@ -7,10 +7,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
-  ReferenceLine,
-  Brush,
   Cell,
 } from "recharts";
 
@@ -20,7 +17,7 @@ const StableCoinNetFlowChart = ({ data = [] }) => {
     ...item,
     netFlow: item.inflow - item.outflow,
     inFlow: item.inflow,
-    outFlow: -item.outflow, // Hiển thị OutFlow dư��i trục ��m nếu cần
+    outFlow: -item.outflow, 
   }));
 
   const [zoomRange, setZoomRange] = useState([0, data.length - 1]);
@@ -161,7 +158,7 @@ const StableCoinNetFlowChart = ({ data = [] }) => {
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
           <XAxis
             dataKey="time"
-            tick={{ fontSize: 14, fontWeight: 500, fill: "#32383e" }}
+            tick={{ fontSize: 12, fontWeight: 500, fill: "#32383e" }}
             tickFormatter={(value) => {
               const date = new Date(value);
               const day = date.getDate().toString().padStart(2, "0");
@@ -178,7 +175,7 @@ const StableCoinNetFlowChart = ({ data = [] }) => {
               position: "insideLeft",
               // value: "inFlow",
             }}
-            tick={{ fontSize: 14, fontWeight: 500, fill: "#333" }}
+            tick={{ fontSize: 12, fontWeight: 500, fill: "#333" }}
             tickFormatter={formatNumber}
             domain={["auto", "auto"]}
           />
@@ -192,21 +189,12 @@ const StableCoinNetFlowChart = ({ data = [] }) => {
               position: "insideRight",
               // value: "BTC Price ($)",
             }}
-            tick={{ fontSize: 14, fontWeight: 500, fill: "#333" }}
+            tick={{ fontSize: 12, fontWeight: 500, fill: "#333" }}
             domain={[0, "auto"]} // giá tối thiểu là 0
-            // tickFormatter={(value) => `$${value.toLocaleString()}`}
             tickFormatter={formatNumber}
           />
 
-          {/* <Tooltip
-            contentStyle={{
-              backgroundColor: "rgba(214, 221, 224, 0.8)",
-              borderRadius: "5px",
-              color: "black",
-            }}
-            itemStyle={{ color: "black" }}
-            cursor={{ strokeDasharray: "3 3" }}
-          /> */}
+        
           <Tooltip content={<CustomTooltip />} />
 
           {/* Cột hiển thị Net Flow */}
@@ -214,7 +202,7 @@ const StableCoinNetFlowChart = ({ data = [] }) => {
             {processedData.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
-                fill={entry.netFlow >= 0 ? "#0ECB81" : "#F6465D"} // Xanh nếu dương, đỏ nếu âm
+                fill={entry.netFlow >= 0 ? "#2F9E4F" : "#F6465D"} // Xanh nếu dương, đỏ nếu âm
               />
             ))}
           </Bar>
@@ -230,13 +218,13 @@ const StableCoinNetFlowChart = ({ data = [] }) => {
             name="Balance"
           />
 
-          <Brush
+          {/* <Brush
             startIndex={zoomRange[0]}
             endIndex={zoomRange[1]}
             onChange={({ startIndex, endIndex }) =>
               setZoomRange([startIndex, endIndex])
             }
-          />
+          /> */}
         </ComposedChart>
       </ResponsiveContainer>
     </div>

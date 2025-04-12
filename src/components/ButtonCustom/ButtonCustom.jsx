@@ -23,8 +23,8 @@ const ButtonCustom = ({
   // Xác định kiểu
   const variantClasses = {
     default: " text-black",
-    primary: "bg-black text-white",
-    secondary: " bg-black text-white",
+    primary: "bg-black/80 text-white text-bold",
+    // secondary: " bg-black/80 text-white",
     success: "bg-green-500 text-white",
     danger: "bg-red-500 text-white",
   };
@@ -32,7 +32,7 @@ const ButtonCustom = ({
   return (
     <div
       className={cx(
-        "rounded-[20px] inline-flex justify-center items-center transition-all duration-200 hover:opacity-80 cursor-pointer",
+        "rounded-[20px] inline-flex justify-center items-center transition-all duration-200  cursor-pointer",
         sizeClasses[size], // Áp dụng kích thước
         variantClasses[variant], // Áp dụng kiểu
         {

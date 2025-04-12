@@ -92,6 +92,20 @@ const CandlestickVolume = () => {
       }
     });
 
+    chart.timeScale().subscribeVisibleLogicalRangeChange((newRange) => {
+      if (!newRange) return;
+
+      const from = newRange.from;
+      const to = newRange.to;
+
+      // Giả sử bạn load thêm dữ liệu khi user kéo tới gần đầu biểu đồ
+      if (from < 10) {
+        console.log("Load thêm dữ liệu lịch sử...");
+        // Gọi API để load thêm dữ liệu cũ
+      }
+    });
+
+
     chart.timeScale().fitContent();
     candleSeriesRef.current = candlestickSeries;
     histogramSeriesRef.current = volumeSeries;
@@ -106,7 +120,7 @@ const CandlestickVolume = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1m&limit=200"
+          "https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1m&limit=300"
         );
 
         const candles = response.data.map((item) => ({
@@ -225,7 +239,3 @@ const CandlestickVolume = () => {
 export default CandlestickVolume;
 
 
-
-{
-  
-}

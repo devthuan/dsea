@@ -7,6 +7,7 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  Legend,
 } from "recharts";
 
 // Dữ liệu gốc
@@ -113,6 +114,7 @@ const FundingRateChart = () => {
             stackId="1"
             fill="#aaaaaa"
             name="Binance OI"
+            stroke="none"
           />
           <Area
             yAxisId="right"
@@ -121,6 +123,7 @@ const FundingRateChart = () => {
             stackId="1"
             fill="#cccccc"
             name="Bybit OI"
+            stroke="none"
           />
 
           {/* Price */}
@@ -129,9 +132,18 @@ const FundingRateChart = () => {
             type="linear"
             dataKey="price"
             stroke="red"
-            strokeWidth={2}
+            strokeWidth={1}
             dot={false}
             name="Price"
+          />
+          <Legend
+            verticalAlign="top"
+            align="left"
+            wrapperStyle={{
+              position: "relative",
+              top: -410, // Dịch xuống dưới
+              right: -50,
+            }}
           />
         </ComposedChart>
       </ResponsiveContainer>

@@ -1,5 +1,4 @@
 import Web3 from "web3";
-import dashboardContract from "../contracts/dashboardContract.json";
 
 const httpProvider = new Web3.providers.HttpProvider(
   import.meta.env.VITE_HTTP_PROVIDER_URL
@@ -16,12 +15,11 @@ const web3Ws = new Web3(wsProvider);
 
 // init cache
 const contractInstances = new Map();
-export const getContractInstance = (name, useHttp = false) => {
-  if (contractInstances.has(name)) {
-    return contractInstances.get(name);
+export const getContractInstance = (nameContractJson, useHttp = false) => {
+  if (contractInstances.has(nameContractJson.address)) {
+    return contractInstances.get(nameContractJson.address);
   }
-
-  const contractData = dashboardContract[name];
+  const contractData = nameContractJson;
 
   if (!contractData) {
     console.error(`Contract ${name} không tồn tại.`);
@@ -30,13 +28,14 @@ export const getContractInstance = (name, useHttp = false) => {
 
   const { address, abi } = contractData;
 
+
   if (!Array.isArray(abi)) {
     console.error(`ABI của contract ${name} không hợp lệ.`);
     return null;
   }
 
   const instance = new (useHttp ? web3Http : web3Ws).eth.Contract(abi, address);
-  contractInstances.set(name, instance);
+  contractInstances.set(nameContractJson.address, instance);
   return instance;
 };
 
@@ -53,6 +52,7 @@ export const fetchDataSmartContract = async (
   }
   try {
     return await contract.methods[methodName](...args).call();
+  
   } catch (err) {
     console.error(`Lỗi khi gọi ${methodName}:`, err);
     return null;
@@ -64,8 +64,7 @@ export const listenToEventSmartContract = async (
   eventName,
   callback
 ) => {
-  const contract = getContractInstance(contractName);
-
+  const contract = await getContractInstance(contractName);
   if (!contract) {
     console.warn("Contract chưa khởi tạo, không thể lắng nghe sự kiện.");
     return;
@@ -76,18 +75,28 @@ export const listenToEventSmartContract = async (
   }
 
   try {
-    const eventListener = contract.events[eventName]()
-      .on("data", callback)
-      .on("error", (error) => console.error("Lỗi sự kiện:", error));
+    const subscription = contract.events[eventName]();
 
-    return () => eventListener.unsubscribe();
+
+    subscription.on("connected", () => {
+
+      // Chỉ lắng nghe dữ liệu sau khi kết nối thành công
+      subscription.on("data", callback);
+    });
+
+    subscription.on("error", (error) => {
+      console.error("Lỗi sự kiện:", error);
+    });
   } catch (error) {
     console.error(`Lỗi khi đăng ký sự kiện ${eventName}:`, error);
   }
+
+  
+
 };
 
-// multiple
 
+// multiple
 export const listenToMultipleEvents = (contractName, eventNames, callback) => {
   const contract = getContractInstance(contractName);
   if (!contract) {

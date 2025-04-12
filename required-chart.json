@@ -116,7 +116,6 @@
     "open_interest": "1234.56789000",  // Open Interest (Số lượng hợp đồng mở): Được biểu diễn bằng đường màu đen, thể hiện giá trị tiền tệ (USD).
 
     // optional
-
 }
 
 // 2.3 Asset page 3

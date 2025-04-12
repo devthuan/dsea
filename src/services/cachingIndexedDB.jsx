@@ -88,7 +88,7 @@ export const indexedDBServices = {
     try {
       const db = await this.openDB(nameTable);
       const transaction = db.transaction(nameTable, "readwrite");
-      const store = transaction.objectStore(nameTable);
+      const store = transaction.objectStore(nameTable); 
 
       store.delete(id);
       await transaction.complete; // Đảm bảo rằng giao dịch hoàn thành

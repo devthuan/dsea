@@ -1,17 +1,75 @@
+import { useEffect, useRef, useState } from "react";
 import ButtonCustom from "../ButtonCustom/ButtonCustom";
 
 const TabButtons = ({ tabs, activeTab, onTabClick, tabType = "type1" }) => {
   // Tạo một đối tượng chứa các kiểu tab khác nhau
 
+  const containerRef = useRef(null);
+  const [indicatorStyle, setIndicatorStyle] = useState({});
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const activeButton = container.querySelector(".active-tab");
+
+    if (activeButton) {
+      const { offsetLeft, offsetWidth } = activeButton;
+      setIndicatorStyle({
+        left: offsetLeft - 4,
+        width: offsetWidth + 9,
+      });
+    }
+  }, [activeTab, tabs]);
+
+
   const tabTypes = {
     type1: (
-      <div className="h-[26px] w-fit px-4 py-4  rounded-[40px] outline outline-1 outline-offset-[-1px] outline-black inline-flex justify-start items-center gap-4">
+      <div
+        ref={containerRef}
+        className="relative h-[26px] w-fit py-4 rounded-[40px] outline outline-1 outline-offset-[-1px] outline-black inline-flex justify-start items-center px-1"
+      >
+        {/* Nền chuyển động */}
+        <div
+          className="absolute h-8 bg-black/80 rounded-[20px] transition-all duration-300"
+          style={{
+            ...indicatorStyle,
+          }}
+        />
+
         {tabs.map((tab) => (
           <button
             key={tab.id}
-            className={`rounded-[20px] text-sm  font-['Inter'] transition-all ${
+            className={`relative z-10 rounded-[20px] text-xs w-14 h-8 font-['Inter'] transition-all ${
               activeTab === tab.id
-                ? "text-white bg-black/90 px-3 py-1 font-semibold"
+                ? "text-white font-semibold active-tab "
+                : "hover:text-black"
+            }`}
+            onClick={() => onTabClick(tab.id)}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+    ),
+    type1_1: (
+      <div
+        ref={containerRef}
+        className="relative h-[26px] w-fit py-4 rounded-[40px] outline outline-1 outline-offset-[-1px] outline-black inline-flex justify-start items-center px-1"
+      >
+        {/* Nền chuyển động */}
+        <div
+          className="absolute h-8 bg-black/80 rounded-[20px] transition-all duration-300"
+          style={{
+            ...indicatorStyle,
+          }}
+        />
+
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            className={`relative z-10 rounded-[20px] text-xs w-12 h-8 font-['Inter'] transition-all ${
+              activeTab === tab.id
+                ? "text-white font-semibold active-tab "
                 : "hover:text-black"
             }`}
             onClick={() => onTabClick(tab.id)}
@@ -54,7 +112,7 @@ const TabButtons = ({ tabs, activeTab, onTabClick, tabType = "type1" }) => {
                 ? "text-[#76e1db] font-bold"
                 : "hover:text-black"
             }`}
-            variant={`${activeTab === tab.id ? "secondary" : ""}`}
+            variant={`${activeTab === tab.id ? "primary" : ""}`}
           />
         ))}
       </div>
@@ -65,13 +123,38 @@ const TabButtons = ({ tabs, activeTab, onTabClick, tabType = "type1" }) => {
           <ButtonCustom
             key={tab.id}
             text={tab.label}
-            size="large"
+            size="medium"
             onClick={() => onTabClick(tab.id)}
-            className={`${
-              activeTab === tab.id ? "text-[#76E1DB] font-semibold" : "hover:text-black"
-            }`}
             variant={`${activeTab === tab.id ? "primary" : "default"}`}
           />
+        ))}
+      </div>
+    ),
+    type5: (
+      <div
+        ref={containerRef}
+        className="relative h-[32px] w-auto py-4 rounded-[40px] outline outline-1 outline-offset-[-1px] outline-black inline-flex justify-start items-center px-1"
+      >
+        {/* Nền chuyển động */}
+        <div
+          className="absolute h-8 bg-black/80 rounded-[20px] transition-all duration-300"
+          style={{
+            ...indicatorStyle,
+          }}
+        />
+
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            className={`relative z-10 rounded-[20px] text-md px-4 py-2 w-auto h-auto font-['Inter'] transition-all ${
+              activeTab === tab.id
+                ? "text-white font-semibold active-tab "
+                : "hover:text-black"
+            }`}
+            onClick={() => onTabClick(tab.id)}
+          >
+            {tab.label}
+          </button>
         ))}
       </div>
     ),

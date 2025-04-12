@@ -12,7 +12,7 @@ const DashboardLayout = ({ children }) => {
     <div className="w-full h-full">
       <div className="flex w-full h-screen relative">
         <div className={cx("  h-full ", " w-full")}>
-
+            {/* <Sidebar/> */}
           <div className="  h-[120px]   w-full  ">
             <Header />
           </div>
@@ -23,6 +23,7 @@ const DashboardLayout = ({ children }) => {
         </div>
       </div>
     </div>
+
     // <div className="w-full h-full">
     //   <div className="flex w-full h-screen relative">
     //     {/* Sidebar */}
