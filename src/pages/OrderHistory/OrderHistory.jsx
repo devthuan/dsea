@@ -1,7 +1,4 @@
-import CandlestickVolume from "../../components/charts/CandlestickVolume/CandlestickVolume";
 import ChartOpenInterest from "../../components/charts/ChartOpenInterest/ChartOpenInterest";
-import NetFlowLightWeight from "../../components/charts/NetFlowLightWeight/NetFlowLightWeight";
-import SolanaChart from "../../components/charts/SolanaChart/SolanaChart";
 
 const dataPrice = [
   { time: "2018-10-19", value: 54.9,  },

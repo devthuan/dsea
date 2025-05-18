@@ -69,23 +69,26 @@ const getColorByRank = (rank) => {
 
   return (
     <div className="w-full h-full rounded-[32px] p-[24px] bg-white">
-      <h1 className="text-black text-2xl font-semibold font-['Inter']">
-        Bitcoin Exchange Net Flow
-      </h1>
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-black text-2xl font-semibold font-['Inter']">
+          Bitcoin Exchange Net Flow
+        </h1>
 
-      <div className="mt-4">
-        <TabButtons
-          tabs={tabsData}
-          activeTab={activeTab}
-          onTabClick={setActiveTab}
-          tabType="type4"
-        />
+        <div className="">
+          <TabButtons
+            tabs={tabsData}
+            activeTab={activeTab}
+            onTabClick={setActiveTab}
+            tabType="type5"
+          />
+        </div>
+
       </div>
 
       <div className="mt-[27px]">
         {(activeTab === "netflow") && (
           <div className="w-full  justify-center gap-4 relative">
-            <div className="absolute left-[250px] top-[-20px] flex">
+            <div className="absolute left-[250px] top-[-15px] flex">
               {dataRangeSell?.map((item, index) => (
                 <div key={index} className="flex flex-col items-center">
                   <p className="text-center text-sm">{item.label}</p>

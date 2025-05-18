@@ -1,7 +1,5 @@
-import { useState } from "react";
-import BoxTableToken from "./components/BoxTableToken/BoxTableToken";
-import TabButtons from "../../components/TabButtons/TabButtons";
-import BoxChartHolding from "./components/BoxChartHolding/BoxChartHolding";
+import BoxTableToken from "../../components/deepsea/BoxTableToken/BoxTableToken";
+import BoxChartHolding from "../../components/deepsea/BoxChartHolding/BoxChartHolding";
 
 const Deepsea = () => {
   return (

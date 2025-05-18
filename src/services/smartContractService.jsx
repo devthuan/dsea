@@ -45,7 +45,7 @@ export const fetchDataSmartContract = async (
   methodName,
   ...args
 ) => {
-  const contract = getContractInstance(contractName, true);
+  const contract = getContractInstance(contractName, false);
   if (!contract) {
     console.warn("Contract chưa được khởi tạo.");
     return null;
@@ -91,7 +91,6 @@ export const listenToEventSmartContract = async (
     console.error(`Lỗi khi đăng ký sự kiện ${eventName}:`, error);
   }
 
-  
 
 };
 

@@ -16,87 +16,34 @@ const Sidebar = () => {
     {
       url: "/",
       label: "Dashboard",
-      icon: images.homeIcon,
+      icon: images.homeIcon,  
       isDropdown: false,
     },
     {
-      url: "",
-      label: "Chart",
+      url: "#",
+      label: "Asset",
       icon: images.homeIcon,
       isDropdown: true,
       isOpen: isAssetsOpen,
       setIsOpen: setIsAssetsOpen,
       children: [
         {
-          id: "bar chart",
-          label: "barChart rechart",
-          url: "/barChart-rechart",
-        },
-        {
-          id: "bar chart",
-          label: "barChart lightweight",
-          url: "/barChart-lightweight",
-        },
-        { id: "bar chart", label: "netFlow rechart", url: "/netFlow-rechart" },
-        {
-          id: "bar chart",
-          label: "netFlow lightWeight",
-          url: "/netFlow-lightWeight",
-        },
-        {
-          id: "bar chart",
-          label: "pieChart rechart-1",
-          url: "/pieChart-rechart-1",
-        },
-        {
-          id: "bar chart",
-          label: "pieChart rechart-2",
-          url: "/pieChart-rechart-2",
-        },
-        {
-          id: "bar chart",
-          label: "pieChart rechart-needle",
-          url: "/pieChart-rechart-needle",
-        },
-        {
-          id: "bar chart",
-          label: "treeMapChart rechart",
-          url: "/treeMapChart-rechart",
-        },
-        { id: "bar chart", label: "candleStrick ", url: "/candleStrick" },
-        {
-          id: "bar chart",
-          label: "candleStrick realTime",
-          url: "/candle-lightWeight-realTime",
-        },
-        {
-          id: "bar chart",
-          label: "lineChart lightWeight",
-          url: "/lineChart-lightWeight",
-        },
-        {
-          id: "bar chart",
-          label: "lineChart rechart",
-          url: "/lineChart-rechart",
-        },
-        {
-          id: "bar chart",
-          label: "areaChart lightWeight",
-          url: "/areaChart-lightWeight",
+          id: "Asset",
+          label: "Asset",
+          url: "/asset",
         },
       ],
     },
     {
-      url: "/deepsea",
+      url: "#",
       label: "Deepsea",
       icon: images.homeIcon,
       isDropdown: true,
       isOpen: isDeepseaOpen,
       setIsOpen: setIsDeepseaOpen,
       children: [
-        { id: "crypto", label: "Crypto" },
-        { id: "stocks", label: "Stocks" },
-        { id: "forex", label: "Forex" },
+        { id: "Deepsea", label: "Deepsea", url: "/deep-sea" },
+        { id: "OrderHistory", label: "Order history", url: "/order-history" },
       ],
     },
   ];
@@ -143,9 +90,9 @@ const Sidebar = () => {
       <div className="mt-[-20px]">
         <ul>
           {menuItems.map((item, index) => (
-            <NavLink key={index} to={item.url}>
+            <div key={index} >
               <SidebarItem item={item} isOpen={isOpen} />
-            </NavLink>
+             </div>
           ))}
         </ul>
       </div>
@@ -166,33 +113,60 @@ const SidebarItem = ({ item, isOpen }) => {
   return (
     <li
       key={item.id}
-      className="mt-[20px] "
+      className="mt-[20px]"
       onMouseLeave={() => item.isDropdown && item.setIsOpen(false)}
     >
-      <div
-        className="flex gap-[12px] text-[20px] justify-start items-center cursor-pointer"
-        onClick={() => item.isDropdown && item.setIsOpen(!item.isOpen)}
-      >
-        <div className="w-[36px] h-[36px] bg-[var(--primary)] rounded-[50%] flex justify-center items-center">
-          <img src={item.icon} alt="" />
-        </div>
-        {isOpen && (
-          <div className="flex items-center gap-[12px]">
-            <span>{item.label}</span>
-            {item.isDropdown && (
-              <span>
-                <img
-                  className={`w-[22px] h-auto transition-transform duration-300 ${
-                    item.isOpen ? "rotate-180" : "rotate-0"
-                  }`}
-                  src={images.downArrowIcon}
-                  alt=""
-                />
-              </span>
-            )}
+      {!item.isDropdown ? (
+        <NavLink
+          to={item.url}
+          className={({ isActive }) =>
+            cx(
+              "flex gap-[12px] text-[20px] justify-start items-center cursor-pointer",
+              {
+                "text-[var(--primary)] font-bold": isActive,
+              }
+            )
+          }
+          // end
+        >
+          <div className="w-[36px] h-[36px] bg-white rounded-[50%] flex justify-center items-center">
+            <img src={item.icon} alt="" />
           </div>
-        )}
-      </div>
+          {isOpen && <span>{item.label}</span>}
+        </NavLink>
+      ) : (
+        <div
+          className={cx(
+            "flex gap-[12px] text-[20px] justify-start items-center cursor-pointer",
+            {
+              "text-[var(--primary)] font-bold": item.children.some(
+                (child) => window.location.pathname === child.url
+              ),
+            }
+          )}
+          onClick={() => item.isDropdown && item.setIsOpen(!item.isOpen)}
+        >
+          <div className="w-[36px] h-[36px] bg-white rounded-[50%] flex justify-center items-center">
+            <img src={item.icon} alt="" />
+          </div>
+          {isOpen && (
+            <div className="flex items-center gap-[12px]">
+              <span>{item.label}</span>
+              {item.isDropdown && (
+                <span>
+                  <img
+                    className={`w-[22px] h-auto transition-transform duration-300 ${
+                      item.isOpen ? "rotate-180" : "rotate-0"
+                    }`}
+                    src={images.downArrowIcon}
+                    alt=""
+                  />
+                </span>
+              )}
+            </div>
+          )}
+        </div>
+      )}
 
       {item.isDropdown && item.isOpen && (
         <ul className="pl-[30px] mt-[12px] space-y-[8px]">
@@ -201,12 +175,12 @@ const SidebarItem = ({ item, isOpen }) => {
               key={index}
               to={child.url}
               className={({ isActive }) =>
-                `text-[18px] transition-all cursor-pointer ${
-                  isActive
-                    ? "text-[var(--primary)] font-bold"
-                    : "hover:text-[var(--primary)]"
-                }`
+                cx("text-[18px] transition-all cursor-pointer block", {
+                  "text-[var(--primary)] font-bold": isActive,
+                  "hover:text-[var(--primary)]": !isActive,
+                })
               }
+              end
             >
               <li>{child.label}</li>
             </NavLink>

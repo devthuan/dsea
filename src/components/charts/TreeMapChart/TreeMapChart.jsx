@@ -180,6 +180,7 @@ const dataTest = [
     volume_24h: 1125808000,
     market_cap: 1670000000000,
     change_percent: 2.5,
+    change_percent_1000: 2500,
     category: "POW",
     last_updated: "1743575040000",
     high_24h: 33500.0,
@@ -191,6 +192,7 @@ const dataTest = [
     volume_24h: 1125808000,
     market_cap: 1570000000000,
     change_percent: -2.5,
+    change_percent_1000: 2500,
     category: "POW",
     last_updated: "1743575040000",
     high_24h: 33500.0,
@@ -198,7 +200,6 @@ const dataTest = [
   },
 ];
 
-const COLORS = ["#FF0000", "#0000FF"];
 
 const CustomizedContent = ({
   root,
@@ -233,7 +234,7 @@ const CustomizedContent = ({
         y={y}
         width={width}
         height={height}
-        style={{ fill: fillColor, stroke: "#fff", strokeWidth, strokeOpacity }}
+        style={{ fill: fillColor, stroke: "black", strokeWidth, strokeOpacity }}
       />
       {depth === 1 && (
         <>
@@ -266,13 +267,15 @@ const CustomizedContent = ({
 
 // Custom Tooltip Component
 const CustomTooltipContent = ({ active, payload }) => {
+
+
   const data = payload[0]?.payload;
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-2 shadow-lg border border-gray-300 rounded-md">
         <p className="font-bold">Name: {data.name}</p>
         <p>
-          Price: {data.price}  +{data.change_percent}
+          Price: {data.price}  {data.change_percent}
         </p>
         <p>volume 24h: {data.volume_24h}</p>
         <p>market cap: {data.market_cap}</p>
@@ -282,14 +285,15 @@ const CustomTooltipContent = ({ active, payload }) => {
   return null;
 };
 
-const TreeMapChart = ({ data, width = "100%", height = 417 }) => {
+const TreeMapChart = ({ data = [], width = "100%", height = 417 }) => {
+
   return (
     <ResponsiveContainer width={width} height={height}>
       <Treemap
-        data={dataTest}
-        dataKey="market_cap"
+        data={data}
+        dataKey="change_percent_1000"
         fill="#8884d8"
-        content={<CustomizedContent data={dataTest} />}
+        content={<CustomizedContent data={data} />}
         isAnimationActive={false}
       >
         <Tooltip content={CustomTooltipContent} />

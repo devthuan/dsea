@@ -41,24 +41,19 @@ const BoxRealTimeTXS = () => {
                     </th>
                   );
                 })}
-                
               </tr>
             </thead>
             <tbody>
               {data.map((coin, index) => (
-                <tr key={coin.id}>
+                <tr key={index}>
                   <td className="p-2 text-[#4E4E4E]">{coin.time}</td>
-                  <td className="p-2 text-[#4E4E4E] ">
-                    {coin.from}
-                  </td>
+                  <td className="p-2 text-[#4E4E4E] ">{coin.from}</td>
                   <td className="p-2 text-[#4E4E4E]">{coin.to}</td>
-                  <td className="p-2 text-[#4E4E4E]  gap-2">
-                  {coin.value}
-                  </td>
+                  <td className="p-2 text-[#4E4E4E]  gap-2">{coin.value}</td>
                   <td className="p-2 text-[#4E4E4E] flex gap-2   items-center h-full">
                     <div className="w-[24px] h-[24px] bg-black/20 rounded-lg"></div>
 
-                  {coin.token}
+                    {coin.token}
                   </td>
                   <td className="p-2 text-[#4E4E4E]">{coin.USD}</td>
                 </tr>

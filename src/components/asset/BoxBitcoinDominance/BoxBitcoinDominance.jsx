@@ -1,7 +1,6 @@
 import { useState } from "react";
 import TabButtons from "../../TabButtons/TabButtons";
 import LineChartLightWeight from "../../charts/LineChartLightWeight/LineChartLightWeight";
-import DropDown from "../../DropDown/DropDown";
 const BoxBitcoinDominance = () => {
   const dataExample = [
     { time: "2024-03-01", value: 45000 },

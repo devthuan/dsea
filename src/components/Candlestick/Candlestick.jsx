@@ -4,11 +4,19 @@ import {
   CandlestickSeries,
   HistogramSeries,
 } from "lightweight-charts";
+import { candleServices } from "../../services/asset/candleChartService";
 
-const CandlestickVolume = ({ dataPrice = [], dataVolume = [] }) => {
+const Candlestick = ({ dataPrice = [], dataVolume = [] }) => {
   const chartContainerRef = useRef(null);
   const [volume, setVolume] = useState(null);
   const [price, setPrice] = useState(null);
+  const [dataCandle, setDataCandle] = useState([]);
+
+  const candleSeriesRef = useRef(null);
+  const histogramSeriesRef = useRef(null);
+  const socketRef = useRef(null);
+  const lastCandleRef = useRef(null);
+  
 
   const formatVolume = (num) => {
     if (num >= 1_000_000) return (num / 1_000_000).toFixed(1) + "M";
@@ -16,6 +24,8 @@ const CandlestickVolume = ({ dataPrice = [], dataVolume = [] }) => {
     return num.toString();
   };
 
+
+  // initial chart ui
   useEffect(() => {
     const chartOptions = {
       layout: {
@@ -96,6 +106,53 @@ const CandlestickVolume = ({ dataPrice = [], dataVolume = [] }) => {
     };
   }, []);
 
+  // init data
+  useEffect(() => {
+    const fetchData = async () => {
+
+      const data = await  candleServices.fetchData();
+      console.log(data)
+      
+       if (
+         dataCandle.length > 0 &&
+         candleSeriesRef.current &&
+         histogramSeriesRef.current
+       ) {
+         const candleData = dataCandle.map(
+           ({ time, open, high, low, close }) => ({
+             time,
+             open,
+             high,
+             low,
+             close,
+           })
+         );
+         const volumeData = dataCandle.map(({ time, value, open, close }) => ({
+           time,
+           value,
+           color: close >= open ? "#26a69a" : "#ef5350",
+         }));
+
+         candleSeriesRef.current.setData(candleData);
+         histogramSeriesRef.current.setData(volumeData);
+       }
+    }
+
+
+    fetchData()
+  },[])
+
+  // listent data
+  useEffect(() => {
+    const listeningData = async () => {
+     await candleServices.listeningEvent({type: "a", callback:  (event) => {
+        
+        console.log(event);
+      }});
+    };
+
+    listeningData();
+  }, []);
   return (
     <div
       id="container"
@@ -123,4 +180,4 @@ const CandlestickVolume = ({ dataPrice = [], dataVolume = [] }) => {
   );
 };
 
-export default CandlestickVolume;
+export default Candlestick;

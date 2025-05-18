@@ -1,6 +1,6 @@
 import { useState } from "react";
-import TabButtons from "../../../../components/TabButtons/TabButtons";
-import TableCustom from "../../../../components/TableCustom/TableCustom";
+import TableCustom from "../../TableCustom/TableCustom";
+import TabButtons from "../../TabButtons/TabButtons";
 
 const BoxTableToken = () => {
   const [activeTab, setActiveTab] = useState("flows");
@@ -21,7 +21,7 @@ const BoxTableToken = () => {
         </div>
         <div className="">
           <TabButtons
-            tabs={tabsData}
+                      tabs={tabsData}
             activeTab={activeTab}
             onTabClick={setActiveTab}
             tabType="type3"

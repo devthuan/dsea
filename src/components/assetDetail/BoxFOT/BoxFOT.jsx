@@ -1,14 +1,9 @@
-import { useEffect, useState } from "react";
-import InFlowOutFlow from "../../charts/InFlowOutFlow/InFlowOutFlow";
+import { useState } from "react";
 import NetFlowChart from "../../charts/NetFlowChart/NetFlowChart";
 import TabButtons from "../../TabButtons/TabButtons";
 import ButtonCustom from "../../ButtonCustom/ButtonCustom";
 import CandlestickVolume from "../../charts/CandlestickVolume/CandlestickVolume";
-import useWeb3Contract from "../../../hooks/useWeb3Contract";
-import {
-  CONTRACT_ADDRESS_TEST,
-  CONTRACT_ABI_TEST,
-} from "../../../config/smartContract";
+
 import FundingRateChart from "../../charts/LineChartReChart/FundingRateChart";
 
 
@@ -47,20 +42,6 @@ const BoxFOT = () => {
     { id: "marketCap", label: "Trading view" },
   ];
   
-
-  // logic smart contract
-  const {  contract, listenToEvent } = useWeb3Contract({
-    contractAddress: CONTRACT_ADDRESS_TEST,
-    contractAbi: CONTRACT_ABI_TEST,
-  });
-
-  useEffect(() => {
-    if (contract) {
-      listenToEvent("Recorded", (event) => {
-        console.log(event);
-      });
-    }
-  }, [contract]);
 
   return (
     <div className="w-full h-full  rounded-[32px] p-[24px] bg-white">

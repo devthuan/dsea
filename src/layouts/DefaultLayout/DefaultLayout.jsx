@@ -1,6 +1,8 @@
 import classNames from "classnames/bind";
 import styles from "./DefaultLayout.module.scss";
 import { useState } from "react";
+import Sidebar from "../components/SideBar/SideBar";
+import Header from "../components/Header/Header";
 
 const cx = classNames.bind(styles);
 const DefaultLayout = ({ children }) => {
@@ -26,17 +28,17 @@ const DefaultLayout = ({ children }) => {
       {/* Content */}
       <div
         className={cx(
-          "flex flex-col flex-1 transition-all duration-300 h-screen  z-1",
+          "flex flex-col  transition-all duration-300 ",
           "ml-[4rem] w-[calc(100%-4rem)]"
         )}
       >
         {/* Header */}
-        <div className="  h-[80px] max-h-[80px] fixed z-1 w-[calc(100%-4rem)]  ">
+        <div className="  h-[80px] max-h-[80px]   w-[calc(100%)]  ">
           <Header />
         </div>
 
         {/* Main Content */}
-        <div className="w-full flex-1 p-[30px] mt-[80px] overflow-y-auto">
+        <div className="w-full flex-1 p-[20px] ">
           <div className="w-full max-w-[1980px] mx-auto">{children}</div>
         </div>
       </div>

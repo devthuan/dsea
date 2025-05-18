@@ -1,9 +1,6 @@
 import { useState } from "react";
-import InFlowOutFlow from "../../charts/InFlowOutFlow/InFlowOutFlow";
-import NetFlowChart from "../../charts/NetFlowChart/NetFlowChart";
 import TabButtons from "../../TabButtons/TabButtons";
 import { images } from "../../../assets";
-import TableCustom from "../../TableCustom/TableCustom";
 
 const BoxPerform = () => {
   const [activeTab, setActiveTab] = useState("underperform");

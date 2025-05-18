@@ -18,9 +18,6 @@
     --text-light: #b4b4b4;
     --box-full-color: #edddc3;
     --transparent: transparent;
-    --spacing--margin-desktop: 120px;
-    --border-radius: 4px;
-    --red: #8c3b28;
     --primary-dark: #7b7447;
     --text-primary: #171A1C;
 
@@ -47,7 +44,9 @@ body {
     padding: 0;
     color: var(--text-primary);
     font-family: "Inter", sans-serif;
-    background-color: #EEF1F4;
+    // background-color: #EEF1F4;
+
+    background: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
     
    
     // background: rgb(252, 252, 252);

@@ -133,11 +133,11 @@ const TabButtons = ({ tabs, activeTab, onTabClick, tabType = "type1" }) => {
     type5: (
       <div
         ref={containerRef}
-        className="relative h-[32px] w-auto py-4 rounded-[40px] outline outline-1 outline-offset-[-1px] outline-black inline-flex justify-start items-center px-1"
+        className="relative h-auto w-auto rounded-[40px] outline outline-1 outline-offset-[-1px] outline-black inline-flex justify-start items-center px-1"
       >
         {/* Nền chuyển động */}
         <div
-          className="absolute h-8 bg-black/80 rounded-[20px] transition-all duration-300"
+          className="absolute h-full bg-black/80 rounded-[20px] transition-all duration-300"
           style={{
             ...indicatorStyle,
           }}

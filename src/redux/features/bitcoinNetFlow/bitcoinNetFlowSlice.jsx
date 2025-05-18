@@ -15,6 +15,11 @@ export const bitcoinNetFlowSlice = createSlice({
       state.isLoading = false;
       state.error = null;
     },
+    updateData: (state, action) => {
+      state.data = [...state.data, action.payload];
+      state.isLoading = false;
+      state.error = null;
+    },
     setError: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
@@ -23,6 +28,6 @@ export const bitcoinNetFlowSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { initData, setError } = bitcoinNetFlowSlice.actions;
+export const { initData,updateData, setError } = bitcoinNetFlowSlice.actions;
 
 export default bitcoinNetFlowSlice.reducer;

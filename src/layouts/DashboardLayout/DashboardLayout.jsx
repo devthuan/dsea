@@ -2,11 +2,9 @@ import classNames from "classnames/bind";
 import styles from "./DashboardLayout.module.scss";
 import Sidebar from "../components/SideBar/SideBar";
 import Header from "../components/Header/Header";
-import { useState } from "react";
 
 const cx = classNames.bind(styles);
 const DashboardLayout = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="w-full h-full">

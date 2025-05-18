@@ -1,11 +1,7 @@
-import {  useState } from "react";
-import InFlowOutFlow from "../../charts/InFlowOutFlow/InFlowOutFlow";
-import NetFlowChart from "../../charts/NetFlowChart/NetFlowChart";
+import {  useEffect, useState } from "react";
 import TabButtons from "../../TabButtons/TabButtons";
-
-
 import StableCoinNetFlowChart from "../../charts/NetFlowChart/StableCoinNetFlowChart";
-import { convertTimestampToDateString } from "../../../util/fotmatDate";
+import { bitcoinNetFlowServices } from "../../../services/dashboard/bitcoinNetFlowService";
 
 const initialData = [
   { time: "2024-01-01", inflow: 20000, outflow: 10000, balance: 11000 },
@@ -94,8 +90,6 @@ const initialData = [
   // { time: "2024-03-31", inflow: 29637, outflow: 39983, balance: 27185 },
 ];
 
-
-
 const StableCoinNetFlow = () => {
  
 
@@ -120,14 +114,149 @@ const StableCoinNetFlow = () => {
     setActiveTab(event);
   };
 
- 
+  // useEffect(() => {
+  //   const getDataByDay = async () => {
+  //     const result = await bitcoinNetFlowServices.fetchData("day");
+  //     setDataStableNetFlowByDay(result);
+  //   };
+  //   const getDataByWeek = async () => {
+  //     const result = await bitcoinNetFlowServices.fetchData("week");
+  //     setDataStableNetFlowByWeek(result);
+  //   };
+  //   const getDataByMonth = async () => {
+  //     const result = await bitcoinNetFlowServices.fetchData("month");
+  //     setDataStableNetFlowByMonth(result);
+  //   };
+
+  //   switch (activeTab) {
+  //     case "day":
+  //       getDataByDay();
+  //       break;
+  //     case "week":
+  //       getDataByWeek();
+  //       break;
+  //     case "month":
+  //       getDataByMonth();
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // }, [activeTab]);
 
 
+  useEffect(() => {
+    const getDataByDay = async () => {
+      
+
+      await bitcoinNetFlowServices.listeningEvent({
+        type: activeTab,
+        callback: (newData) => {
+          if (newData) {
+            console.log(newData);
+            setDataStableNetFlowByDay((prevData) => {
+              // Kiểm tra xem dữ liệu của ngày này đã có chưa
+              const existingDataIndex = prevData.findIndex(
+                (item) => item.time === newData.time
+              );
+
+              if (existingDataIndex >= 0) {
+                // Nếu dữ liệu ngày này đã có, cộng dồn giá trị mới vào
+                const updatedData = [...prevData];
+                updatedData[existingDataIndex].inflow += newData.inflow;
+                updatedData[existingDataIndex].outflow += newData.outflow;
+                updatedData[existingDataIndex].price += newData.price;
+                return updatedData;
+              } else {
+                // Nếu chưa có dữ liệu cho ngày này, thêm mới
+                return [...prevData, newData];
+              }
+            });
+          }
+        },
+      });
+    };
+
+    const getDataByWeek = async () => {
+
+      await bitcoinNetFlowServices.listeningEvent({
+        type: activeTab,
+        callback: (newData) => {
+          if (newData) {
+            console.log(newData);
+            setDataStableNetFlowByWeek((prevData) => {
+              // Kiểm tra xem dữ liệu của ngày này đã có chưa
+              const existingDataIndex = prevData.findIndex(
+                (item) => item.time === newData.time
+              );
+
+              if (existingDataIndex >= 0) {
+                // Nếu dữ liệu ngày này đã có, cộng dồn giá trị mới vào
+                const updatedData = [...prevData];
+                updatedData[existingDataIndex].inflow += newData.inflow;
+                updatedData[existingDataIndex].outflow += newData.outflow;
+                updatedData[existingDataIndex].price += newData.price;
+                return updatedData;
+              } else {
+                // Nếu chưa có dữ liệu cho ngày này, thêm mới
+                return [...prevData, newData];
+              }
+            });
+          }
+        },
+      });
+    };
+
+    const getDataByMonth = async () => {
+      
+      await bitcoinNetFlowServices.listeningEvent({
+        type: activeTab,
+        callback: (newData) => {
+          if (newData) {
+            console.log(newData);
+            setDataStableNetFlowByMonth((prevData) => {
+              // Kiểm tra xem dữ liệu của ngày này đã có chưa
+              const existingDataIndex = prevData.findIndex(
+                (item) => item.time === newData.time
+              );
+
+              if (existingDataIndex >= 0) {
+                // Nếu dữ liệu ngày này đã có, cộng dồn giá trị mới vào
+                const updatedData = [...prevData];
+                updatedData[existingDataIndex].inflow += newData.inflow;
+                updatedData[existingDataIndex].outflow += newData.outflow;
+                updatedData[existingDataIndex].price += newData.price;
+                return updatedData;
+              } else {
+                // Nếu chưa có dữ liệu cho ngày này, thêm mới
+                return [...prevData, newData];
+              }
+            });
+          }
+        },
+      });
+    };
+
+    switch (activeTab) {
+      case "day":
+        getDataByDay();
+        break;
+      case "week":
+        getDataByWeek();
+        break;
+      case "month":
+        getDataByMonth();
+        break;
+      default:
+        break;
+    }
+  }, [activeTab]);
+  
+  
   return (
-    <div className="w-full h-full  rounded-[15px] p-[24px] bg-white shadow-sm">
+    <div className="w-full h-full p-[24px] shadow-sm">
       <div className=" w-full flex items-center justify-between">
         <h1 className="justify-start  text-2xl font-bold font-['Inter']">
-          Bitcoin Exchange Net Flow
+          StableCoin Net Flow
         </h1>
         <div className=" w-auto ">
           <TabButtons
@@ -143,10 +272,10 @@ const StableCoinNetFlow = () => {
           <StableCoinNetFlowChart data={dataStableNetFlowByDay} />
         )}
         {activeTab === "week" && (
-          <StableCoinNetFlowChart data={dataStableNetFlowByDay} />
+          <StableCoinNetFlowChart data={dataStableNetFlowByWeek} />
         )}
         {activeTab === "month" && (
-          <StableCoinNetFlowChart data={dataStableNetFlowByDay} />
+          <StableCoinNetFlowChart data={dataStableNetFlowByMonth} />
         )}
       </div>
     </div>

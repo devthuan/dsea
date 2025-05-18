@@ -1,7 +1,7 @@
 import { useState } from "react";
-import TabButtons from "../../../../components/TabButtons/TabButtons";
-import NetFlowChart from "../../../../components/charts/NetFlowChart/NetFlowChart";
-import CryptoPieChart from "../../../../components/charts/CryptPieChart/CryptPieChart";
+import TabButtons from "../../TabButtons/TabButtons";
+import NetFlowChart from "../../charts/NetFlowChart/NetFlowChart";
+import CryptoPieChart from "../../charts/CryptPieChart/CryptPieChart";
 
 const BoxChartHolding = () => {
   const [activeTab, setActiveTab] = useState("flows");

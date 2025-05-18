@@ -1,45 +1,15 @@
 {
-    "candleByDaySMC":{
-        "address":"0x9Fa2B858DA423273268875F17A2062196689Bc3a",
+    "candleContract":{
+        "address":"0xF6015A6729cd3bC47d1BF6EF2E0ca15f7705b741",
         "abi": [
           {
             "inputs": [
               {
                 "components": [
                   {
-                    "internalType": "string",
-                    "name": "symbol",
-                    "type": "string"
-                  },
-                  {
                     "internalType": "uint256",
                     "name": "openTime",
                     "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "open",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "high",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "low",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "close",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "string",
-                    "name": "volume",
-                    "type": "string"
                   },
                   {
                     "internalType": "uint256",
@@ -48,7 +18,37 @@
                   },
                   {
                     "internalType": "string",
-                    "name": "quoteAssetVolume",
+                    "name": "symbol",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "interval",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "open",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "close",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "high",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "low",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "volume",
                     "type": "string"
                   },
                   {
@@ -65,9 +65,14 @@
                     "internalType": "string",
                     "name": "takerBuyQuoteVol",
                     "type": "string"
+                  },
+                  {
+                    "internalType": "bool",
+                    "name": "x",
+                    "type": "bool"
                   }
                 ],
-                "internalType": "struct OHLCVDay.FormData",
+                "internalType": "struct Candle.FormData",
                 "name": "formData",
                 "type": "tuple"
               }
@@ -81,76 +86,77 @@
             "anonymous": false,
             "inputs": [
               {
+                "components": [
+                  {
+                    "internalType": "uint256",
+                    "name": "openTime",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "closeTime",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "symbol",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "interval",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "open",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "close",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "high",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "low",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "volume",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "numberOfTrades",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "takerBuyBaseVol",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "takerBuyQuoteVol",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "bool",
+                    "name": "x",
+                    "type": "bool"
+                  }
+                ],
                 "indexed": false,
-                "internalType": "string",
-                "name": "symbol",
-                "type": "string"
-              },
-              {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "openTime",
-                "type": "uint256"
-              },
-              {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "open",
-                "type": "uint256"
-              },
-              {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "high",
-                "type": "uint256"
-              },
-              {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "low",
-                "type": "uint256"
-              },
-              {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "close",
-                "type": "uint256"
-              },
-              {
-                "indexed": false,
-                "internalType": "string",
-                "name": "volume",
-                "type": "string"
-              },
-              {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "closeTime",
-                "type": "uint256"
-              },
-              {
-                "indexed": false,
-                "internalType": "string",
-                "name": "quoteAssetVolume",
-                "type": "string"
-              },
-              {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "numberOfTrades",
-                "type": "uint256"
-              },
-              {
-                "indexed": false,
-                "internalType": "string",
-                "name": "takerBuyBaseVol",
-                "type": "string"
-              },
-              {
-                "indexed": false,
-                "internalType": "string",
-                "name": "takerBuyQuoteVol",
-                "type": "string"
+                "internalType": "struct Candle.FormData",
+                "name": "formData",
+                "type": "tuple"
               }
             ],
             "name": "Recorded",
@@ -169,39 +175,9 @@
               {
                 "components": [
                   {
-                    "internalType": "string",
-                    "name": "symbol",
-                    "type": "string"
-                  },
-                  {
                     "internalType": "uint256",
                     "name": "openTime",
                     "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "open",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "high",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "low",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "close",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "string",
-                    "name": "volume",
-                    "type": "string"
                   },
                   {
                     "internalType": "uint256",
@@ -210,7 +186,37 @@
                   },
                   {
                     "internalType": "string",
-                    "name": "quoteAssetVolume",
+                    "name": "symbol",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "interval",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "open",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "close",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "high",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "low",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "volume",
                     "type": "string"
                   },
                   {
@@ -227,9 +233,14 @@
                     "internalType": "string",
                     "name": "takerBuyQuoteVol",
                     "type": "string"
+                  },
+                  {
+                    "internalType": "bool",
+                    "name": "x",
+                    "type": "bool"
                   }
                 ],
-                "internalType": "struct OHLCVDay.FormData[]",
+                "internalType": "struct Candle.FormData[]",
                 "name": "",
                 "type": "tuple[]"
               }
@@ -255,39 +266,9 @@
               {
                 "components": [
                   {
-                    "internalType": "string",
-                    "name": "symbol",
-                    "type": "string"
-                  },
-                  {
                     "internalType": "uint256",
                     "name": "openTime",
                     "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "open",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "high",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "low",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "close",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "string",
-                    "name": "volume",
-                    "type": "string"
                   },
                   {
                     "internalType": "uint256",
@@ -296,7 +277,37 @@
                   },
                   {
                     "internalType": "string",
-                    "name": "quoteAssetVolume",
+                    "name": "symbol",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "interval",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "open",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "close",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "high",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "low",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "volume",
                     "type": "string"
                   },
                   {
@@ -313,9 +324,14 @@
                     "internalType": "string",
                     "name": "takerBuyQuoteVol",
                     "type": "string"
+                  },
+                  {
+                    "internalType": "bool",
+                    "name": "x",
+                    "type": "bool"
                   }
                 ],
-                "internalType": "struct OHLCVDay.FormData[]",
+                "internalType": "struct Candle.FormData[]",
                 "name": "",
                 "type": "tuple[]"
               }
@@ -346,39 +362,9 @@
               {
                 "components": [
                   {
-                    "internalType": "string",
-                    "name": "symbol",
-                    "type": "string"
-                  },
-                  {
                     "internalType": "uint256",
                     "name": "openTime",
                     "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "open",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "high",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "low",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "close",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "string",
-                    "name": "volume",
-                    "type": "string"
                   },
                   {
                     "internalType": "uint256",
@@ -387,7 +373,37 @@
                   },
                   {
                     "internalType": "string",
-                    "name": "quoteAssetVolume",
+                    "name": "symbol",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "interval",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "open",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "close",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "high",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "low",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "volume",
                     "type": "string"
                   },
                   {
@@ -404,9 +420,105 @@
                     "internalType": "string",
                     "name": "takerBuyQuoteVol",
                     "type": "string"
+                  },
+                  {
+                    "internalType": "bool",
+                    "name": "x",
+                    "type": "bool"
                   }
                 ],
-                "internalType": "struct OHLCVDay.FormData[]",
+                "internalType": "struct Candle.FormData[]",
+                "name": "",
+                "type": "tuple[]"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "string",
+                "name": "tokenSymbol",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256",
+                "name": "endTimestamp",
+                "type": "uint256"
+              }
+            ],
+            "name": "getLatest100Candles",
+            "outputs": [
+              {
+                "components": [
+                  {
+                    "internalType": "uint256",
+                    "name": "openTime",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "closeTime",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "symbol",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "interval",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "open",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "close",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "high",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "low",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "volume",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "numberOfTrades",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "takerBuyBaseVol",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "takerBuyQuoteVol",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "bool",
+                    "name": "x",
+                    "type": "bool"
+                  }
+                ],
+                "internalType": "struct Candle.FormData[]",
                 "name": "",
                 "type": "tuple[]"
               }
@@ -432,39 +544,9 @@
               {
                 "components": [
                   {
-                    "internalType": "string",
-                    "name": "symbol",
-                    "type": "string"
-                  },
-                  {
                     "internalType": "uint256",
                     "name": "openTime",
                     "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "open",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "high",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "low",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "close",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "string",
-                    "name": "volume",
-                    "type": "string"
                   },
                   {
                     "internalType": "uint256",
@@ -473,7 +555,37 @@
                   },
                   {
                     "internalType": "string",
-                    "name": "quoteAssetVolume",
+                    "name": "symbol",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "interval",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "open",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "close",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "high",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "low",
+                    "type": "string"
+                  },
+                  {
+                    "internalType": "string",
+                    "name": "volume",
                     "type": "string"
                   },
                   {
@@ -490,9 +602,14 @@
                     "internalType": "string",
                     "name": "takerBuyQuoteVol",
                     "type": "string"
+                  },
+                  {
+                    "internalType": "bool",
+                    "name": "x",
+                    "type": "bool"
                   }
                 ],
-                "internalType": "struct OHLCVDay.FormData",
+                "internalType": "struct Candle.FormData",
                 "name": "",
                 "type": "tuple"
               }
